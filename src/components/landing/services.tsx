@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Gem, Layers, ScanFace, Sparkles, Sun, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Gem, Layers, ScanFace, Sparkles, Sun, Waves } from "lucide-react";
 import { Eyebrow, Reveal } from "./reveal";
 
 const SERVICES = [
@@ -10,36 +11,42 @@ const SERVICES = [
     title: "Facial Regeneratif Degerasia",
     desc: "Ritual wajah signature yang menggabungkan medical-grade active, massage limfatik, dan teknologi regeneratif untuk kilau sehat yang bertahan lama.",
     tag: "Signature",
+    href: "/layanan/signature-facial",
   },
   {
     icon: ScanFace,
     title: "Anti-Aging & Botox Presisi",
     desc: "Penghalusan garis ekspresif dengan dosing presisi — hasil natural, ekspresi tetap hidup, tanpa kesan beku.",
     tag: "Most Loved",
+    href: "/layanan/botox",
   },
   {
     icon: Layers,
     title: "Filler & Kontur Wajah",
     desc: "Sculpting volume pada pipi, dagu, dan bibir dengan estetika proporsi Asia yang dipelajari bertahun-tahun.",
     tag: "Advanced",
+    href: "/layanan/dermal-filler",
   },
   {
     icon: Sun,
     title: "Laser & Rejuvenasi Kulit",
     desc: "Solusi pigmen, bekas jerawat, dan tekstur kulit dengan platform laser terkini yang aman untuk kulit tropis.",
     tag: "Technology",
+    href: "/layanan/f-plasma-rejuv",
   },
   {
     icon: Waves,
     title: "Thread Lift Halus",
     desc: "Efek angkat instan tanpa operasi besar — kontur V-line yang elegan dengan masa pemulihan minimal.",
     tag: "Lunchtime",
+    href: "/layanan/thread-lift",
   },
   {
     icon: Sparkles,
     title: "Glow Program 90 Hari",
     desc: "Program terencana personal: kombinasi in-klinik treatment, DEGERA homecare, dan pendampingan gizi kulit.",
     tag: "Program",
+    href: "/layanan/f-silk-glow",
   },
 ];
 
@@ -101,14 +108,14 @@ export function Services() {
                 </h3>
                 <p className="mt-3 text-sm font-light leading-relaxed text-moss">{s.desc}</p>
 
-                <a
-                  href="#kontak"
+                <Link
+                  href={s.href}
                   className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-leaf-deep transition-all duration-300 hover:gap-3.5 hover:text-forest"
-                  aria-label={`Reservasi ${s.title}`}
+                  aria-label={`Lihat detail ${s.title}`}
                 >
-                  Reservasi
+                  Lihat Detail
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
-                </a>
+                </Link>
 
                 <span
                   aria-hidden
@@ -118,6 +125,18 @@ export function Services() {
             </motion.article>
           ))}
         </div>
+
+        <Reveal delay={0.15}>
+          <div className="mt-14 text-center">
+            <Link
+              href="/layanan"
+              className="group inline-flex items-center gap-3 rounded-full border border-leaf/30 bg-sage px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.25em] text-forest transition-all duration-500 hover:border-leaf hover:bg-forest hover:text-mint"
+            >
+              Jelajahi 13 Treatment Lengkap
+              <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" aria-hidden />
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

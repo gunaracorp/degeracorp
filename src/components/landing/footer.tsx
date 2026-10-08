@@ -1,26 +1,35 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Facebook, MapPin, MessageCircle } from "lucide-react";
+import { SITE, waLink } from "@/lib/degerasia-data";
 
-const QUICK_LINKS = [
-  { href: "#tentang", label: "Tentang Dr. Fatri" },
-  { href: "#layanan", label: "Layanan Klinik" },
-  { href: "#degera", label: "Produk DEGERA" },
-  { href: "#perjalanan", label: "Perjalanan Perawatan" },
-  { href: "#testimoni", label: "Testimoni" },
+const MAIN_LINKS = [
+  { href: "/", label: "Beranda" },
+  { href: "/tentang", label: "Tentang Dr. Fatri" },
+  { href: "/layanan", label: "Layanan Klinik" },
+  { href: "/produk", label: "Produk DEGERA" },
+  { href: "/galeri", label: "Galeri" },
+  { href: "/artikel", label: "Artikel & Journal" },
+];
+
+const MORE_LINKS = [
+  { href: "/promo", label: "Promo & Program" },
+  { href: "/faq", label: "Pertanyaan Umum" },
+  { href: "/kontak", label: "Reservasi & Kontak" },
 ];
 
 const SOCIALS = [
   {
     icon: MessageCircle,
     label: "WhatsApp Klinik Degerasia",
-    href: "https://wa.me/6282236000715",
+    href: waLink(),
   },
   {
     icon: Facebook,
     label: "Facebook Klinik Degerasia",
-    href: "https://web.facebook.com/klinik.gerasia",
+    href: SITE.facebookUrl,
   },
   {
     icon: MapPin,
@@ -34,10 +43,10 @@ export function Footer() {
     <footer className="mt-auto bg-forest text-porcelain">
       <div aria-hidden className="h-px w-full brand-hairline" />
 
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.3fr_1fr_1fr] md:px-8 md:py-20">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.3fr_1fr_1fr_1.2fr] md:px-8 md:py-20 lg:gap-10">
         {/* Brand */}
         <div>
-          <a href="#beranda" className="flex items-center gap-3" aria-label="Kembali ke beranda">
+          <Link href="/" className="flex items-center gap-3" aria-label="Klinik Degerasia — Beranda">
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-porcelain p-1.5 shadow-md">
               <Image
                 src="/images/logo-degerasia.png"
@@ -53,10 +62,10 @@ export function Footer() {
                 by Dr. Fatri Idana
               </span>
             </span>
-          </a>
+          </Link>
           <p className="mt-6 max-w-sm text-sm font-light leading-relaxed text-porcelain/60">
             Rumah kecantikan terintegrasi di bawah naungan Dr. Fatri Idana, M.Biomed., AAM —
-            mempersatukan presisi sains medis estetika dengan seni keanggunan alami.
+            mempersatukan presisi sains medis estetika dengan seni keanggunan botani alami.
           </p>
           <div className="mt-7 flex items-center gap-3">
             {SOCIALS.map((s) => (
@@ -74,21 +83,41 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Navigasi */}
+        {/* Navigasi utama */}
         <nav aria-label="Navigasi footer">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.3em] text-mint">
             Jelajahi
           </h2>
           <ul className="mt-6 space-y-3.5">
-            {QUICK_LINKS.map((l) => (
+            {MAIN_LINKS.map((l) => (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
                   className="group inline-flex items-center gap-2 text-sm font-light text-porcelain/70 transition-colors hover:text-mint"
                 >
                   <span aria-hidden className="h-px w-0 bg-mint transition-all duration-300 group-hover:w-4" />
                   {l.label}
-                </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Link lebih banyak */}
+        <nav aria-label="Navigasi footer tambahan">
+          <h2 className="text-[11px] font-semibold uppercase tracking-[0.3em] text-mint">
+            Perusahaan
+          </h2>
+          <ul className="mt-6 space-y-3.5">
+            {MORE_LINKS.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className="group inline-flex items-center gap-2 text-sm font-light text-porcelain/70 transition-colors hover:text-mint"
+                >
+                  <span aria-hidden className="h-px w-0 bg-mint transition-all duration-300 group-hover:w-4" />
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -100,25 +129,19 @@ export function Footer() {
             Jam Kunjungan
           </h2>
           <ul className="mt-6 space-y-3.5 text-sm font-light text-porcelain/70">
-            <li className="flex justify-between gap-6">
-              <span>Senin — Jumat</span>
-              <span className="text-porcelain/90">10.00 — 19.00</span>
-            </li>
-            <li className="flex justify-between gap-6">
-              <span>Sabtu</span>
-              <span className="text-porcelain/90">10.00 — 17.00</span>
-            </li>
-            <li className="flex justify-between gap-6">
-              <span>Minggu</span>
-              <span className="text-porcelain/90">Dengan perjanjian</span>
-            </li>
+            {SITE.hours.map((h) => (
+              <li key={h.day} className="flex justify-between gap-4">
+                <span>{h.day}</span>
+                <span className="text-right text-porcelain/90">{h.time}</span>
+              </li>
+            ))}
           </ul>
           <p className="mt-7 rounded-2xl border border-porcelain/10 bg-porcelain/5 p-4 text-[13px] font-light leading-relaxed text-porcelain/60">
             Jl. Sultan Kaharuddin, Dusun Sering, Desa Kerato,
             Kec. Unter Iwes, Kab. Sumbawa, NTB 84316 — di depan
             Masjid Sering / Perempatan Sering.
             <br />
-            <span className="text-mint">+62 822-3600-0715</span>
+            <span className="text-mint">{SITE.phoneDisplay}</span>
           </p>
         </div>
       </div>

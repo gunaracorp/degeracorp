@@ -1,34 +1,43 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { FlaskConical, Leaf, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, FlaskConical, Leaf, ShieldCheck, Sparkles } from "lucide-react";
 import { Eyebrow, Reveal } from "./reveal";
 
 const PRODUCTS = [
   {
     img: "/images/degera-serum.png",
-    name: "Degera Radiance Serum",
+    name: "Degera Serum Gold",
     role: "Serum pencerah nan emas",
-    note: "Peptida + Niacinamide — untuk kilau sehat yang merata",
+    note: "Peptida + Gold Colloid — memperbaiki kulit semalaman",
+    href: "/produk/serum-gold",
+    price: "Rp 120.000",
   },
   {
     img: "/images/degera-cream.png",
-    name: "Degera Barrier Cream",
-    role: "Krim pemulih lapisan kulit",
-    note: "Ceramida kompleks — mengunci kelembapan 72 jam",
+    name: "Degera J'Ra Cream",
+    role: "Krim siang legendaris",
+    note: "Niacinamide + Rice Extract — mencerahkan & melindungi",
+    href: "/produk/jra-cream",
+    price: "Rp 55.000",
   },
   {
     img: "/images/degera-sunscreen.png",
-    name: "Degera Veil Sunscreen",
-    role: "Tabir surya velvety SPF 50",
-    note: "Finish satin tanpa whitecast — aman untuk kulit tropis",
+    name: "Degera Sunscreen Free Oily",
+    role: "Tabir surya oil-free",
+    note: "Finish matte tanpa whitecast — untuk kulit berminyak",
+    href: "/produk/sunscreen-free-oily",
+    price: "Rp 55.000",
   },
   {
     img: "/images/degera-toner.png",
-    name: "Degera Dewy Toner",
-    role: "Esensi pelembap ringan",
-    note: "Hyaluronic multi-weight — siapkan kulit menyerap active",
+    name: "Degera Toner 2 IN 1",
+    role: "Penyeimbang dua fungsi",
+    note: "Witch Hazel + Panthenol — pori tampak halus",
+    href: "/produk/toner-2-in-1",
+    price: "Rp 55.000",
   },
 ];
 
@@ -115,21 +124,30 @@ export function Products() {
                 <p className="text-[10px] font-medium uppercase tracking-[0.25em] text-mint/80">{prod.role}</p>
                 <h3 className="mt-2 font-display text-xl font-medium text-porcelain">{prod.name}</h3>
                 <p className="mt-2 text-[13px] font-light leading-relaxed text-porcelain/65">{prod.note}</p>
-                <a
-                  href="#kontak"
+                <Link
+                  href={prod.href}
                   className="mt-4 inline-flex items-center gap-2 border-b border-mint/40 pb-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-mint transition-all duration-300 hover:gap-3.5 hover:border-mint"
-                  aria-label={`Pesan ${prod.name}`}
+                  aria-label={`Lihat detail ${prod.name}`}
                 >
-                  Pesan via Klinik
+                  {prod.price}
                   <span aria-hidden>→</span>
-                </a>
+                </Link>
               </div>
             </motion.article>
           ))}
         </div>
 
         <Reveal delay={0.2}>
-          <p className="mt-12 text-center text-[11px] uppercase tracking-[0.3em] text-porcelain/40">
+          <div className="mt-12 text-center">
+            <Link
+              href="/produk"
+              className="group inline-flex items-center gap-3 rounded-full border border-mint/40 px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.25em] text-mint transition-all duration-500 hover:bg-mint hover:text-forest"
+            >
+              Lihat 21 Produk Terdaftar BPOM
+              <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" aria-hidden />
+            </Link>
+          </div>
+          <p className="mt-6 text-center text-[11px] uppercase tracking-[0.3em] text-porcelain/40">
             Tersedia eksklusif di Klinik Degerasia &amp; apotek mitra terverifikasi
           </p>
         </Reveal>

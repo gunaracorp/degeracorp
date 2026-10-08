@@ -6,6 +6,7 @@ import { Stats } from "@/components/landing/stats";
 import { Philosophy } from "@/components/landing/philosophy";
 import { Services } from "@/components/landing/services";
 import { Products } from "@/components/landing/products";
+import { JournalPreview } from "@/components/landing/journal-preview";
 import { Journey } from "@/components/landing/journey";
 import { Testimonials } from "@/components/landing/testimonials";
 import { CtaBanner } from "@/components/landing/cta";
@@ -25,6 +26,7 @@ export default function Home() {
         <Philosophy />
         <Services />
         <Products />
+        <JournalPreview />
         <Journey />
         <Testimonials />
         <CtaBanner />

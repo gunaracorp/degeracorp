@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
 import { Reveal } from "./reveal";
@@ -41,12 +42,12 @@ export function CtaBanner() {
         </Reveal>
         <Reveal delay={0.32}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#kontak"
+            <Link
+              href="/kontak"
               className="group relative inline-flex overflow-hidden rounded-full bg-mint px-10 py-4 text-[12px] font-semibold uppercase tracking-[0.25em] text-forest shadow-2xl transition-transform duration-300 hover:scale-[1.03]"
             >
               <span className="relative">Pesan Jadwal Sekarang</span>
-            </a>
+            </Link>
             <a
               href="https://wa.me/6282236000715"
               target="_blank"

@@ -1,0 +1,1251 @@
+     1→/**
+     2→ * ─────────────────────────────────────────────────────────────
+     3→ *  DEGERASIA — Single Source of Truth (Data Tersentralisasi)
+     4→ *  Klinik Kecantikan & Anti-Aging — Sumbawa, NTB
+     5→ *  Data produk riil dari List Produk BPOM DEGERA (2022–2025)
+     6→ * ─────────────────────────────────────────────────────────────
+     7→ */
+     8→
+     9→/* ── Tipe Data ─────────────────────────────────────────────── */
+    10→
+    11→export interface SiteInfo {
+    12→  name: string;
+    13→  brand: string;
+    14→  tagline: string;
+    15→  doctorName: string;
+    16→  doctorTitle: string;
+    17→  phoneDisplay: string;
+    18→  whatsappUrl: string;
+    19→  facebookUrl: string;
+    20→  address: string;
+    21→  addressShort: string;
+    22→  landmark: string;
+    23→  hours: { day: string; time: string }[];
+    24→  waGreeting: string;
+    25→}
+    26→
+    27→export interface ServiceFaq {
+    28→  q: string;
+    29→  a: string;
+    30→}
+    31→
+    32→export interface Service {
+    33→  slug: string;
+    34→  name: string;
+    35→  category: ServiceCategory;
+    36→  signature: boolean;
+    37→  tagline: string;
+    38→  desc: string;
+    39→  benefits: string[];
+    40→  steps: { title: string; detail: string }[];
+    41→  duration: string;
+    42→  downtime: string;
+    43→  priceFrom: string;
+    44→  image: string;
+    45→  faq: ServiceFaq[];
+    46→}
+    47→
+    48→export type ServiceCategory =
+    49→  | "Signature dr. Fatri"
+    50→  | "Perawatan Wajah & Kulit"
+    51→  | "Anti-Aging & Kontur";
+    52→
+    53→export interface Product {
+    54→  slug: string;
+    55→  name: string;
+    56→  bpom: string;
+    57→  registered: string;
+    58→  category: ProductCategory;
+    59→  packaging: string;
+    60→  price: number;
+    61→  desc: string;
+    62→  usage: string;
+    63→  ingredients: string;
+    64→  image: string;
+    65→  badge?: string;
+    66→}
+    67→
+    68→export type ProductCategory =
+    69→  | "Cleanser"
+    70→  | "Toner"
+    71→  | "Serum"
+    72→  | "Cream"
+    73→  | "Sunscreen"
+    74→  | "Istimewa";
+    75→
+    76→export interface Article {
+    77→  slug: string;
+    78→  title: string;
+    79→  category: string;
+    80→  excerpt: string;
+    81→  date: string;
+    82→  readTime: string;
+    83→  cover: string;
+    84→  author: string;
+    85→  sections: { heading: string; body: string[] }[];
+    86→}
+    87→
+    88→export interface Testimonial {
+    89→  name: string;
+    90→  city: string;
+    91→  treatment: string;
+    92→  quote: string;
+    93→}
+    94→
+    95→export interface Promo {
+    96→  title: string;
+    97→  subtitle: string;
+    98→  description: string;
+    99→  valid: string;
+   100→  slug: string;
+   101→  icon: string;
+   102→}
+   103→
+   104→export interface Faq {
+   105→  q: string;
+   106→  a: string;
+   107→}
+   108→
+   109→export interface GalleryItem {
+   110→  src: string;
+   111→  caption: string;
+   112→  tag: string;
+   113→}
+   114→
+   115→/* ── Info Situs & Kontak Riil ──────────────────────────────── */
+   116→
+   117→export const SITE: SiteInfo = {
+   118→  name: "KLINIK DEGERASIA",
+   119→  brand: "DEGERASIA",
+   120→  tagline: "Seni & Sains Kecantikan Botani",
+   121→  doctorName: "Dr. Fatri Idana, M.Biomed., AAM",
+   122→  doctorTitle: "Senior Dokter Kecantikan · Founder Klinik Degerasia & Brand DEGERA",
+   123→  phoneDisplay: "+62 822-3600-0715",
+   124→  whatsappUrl: "https://wa.me/6282236000715",
+   125→  facebookUrl: "https://web.facebook.com/klinik.gerasia",
+   126→  address:
+   127→    "Jl. Sultan Kaharuddin, Dusun Sering, Desa Kerato, Kec. Unter Iwes, Kab. Sumbawa, Nusa Tenggara Barat 84316",
+   128→  addressShort: "Sumbawa, Nusa Tenggara Barat",
+   129→  landmark: "Di depan Masjid Sering / Perempatan Sering",
+   130→  hours: [
+   131→    { day: "Senin – Jumat", time: "09.00 – 17.00 WITA" },
+   132→    { day: "Sabtu", time: "09.00 – 15.00 WITA" },
+   133→    { day: "Minggu & Libur", time: "Dengan Perjanjian" },
+   134→  ],
+   135→  waGreeting:
+   136→    "Halo Klinik Degerasia, saya ingin berkonsultasi & melakukan reservasi perawatan. Terima kasih.",
+   137→};
+   138→
+   139→export function waLink(message?: string): string {
+   140→  return `${SITE.whatsappUrl}?text=${encodeURIComponent(message ?? SITE.waGreeting)}`;
+   141→}
+   142→
+   143→/* ── Layanan (13 Tindakan) ─────────────────────────────────── */
+   144→
+   145→export const SERVICE_CATEGORIES: ServiceCategory[] = [
+   146→  "Signature dr. Fatri",
+   147→  "Perawatan Wajah & Kulit",
+   148→  "Anti-Aging & Kontur",
+   149→];
+   150→
+   151→export const SERVICES: Service[] = [
+   152→  {
+   153→    slug: "f-silk-glow",
+   154→    name: "F-Silk Glow",
+   155→    category: "Signature dr. Fatri",
+   156→    signature: true,
+   157→    tagline: "Ritual glowing eksklusif yang dirancang langsung oleh dr. Fatri Idana.",
+   158→    desc: "F-Silk Glow adalah treatment andalan DEGERASIA yang memadukan gentle exfoliasi medis, infus nutrisi kulit, dan masker botani DEGERA dalam satu sesi mewah. Dirancang khusus oleh dr. Fatri untuk menghadirkan kulit sehalus sutra dengan sinar alami — tanpa downtime, cocok bahkan bagi pemula.",
+   159→    benefits: [
+   160→      "Kulit langsung tampak cerah dan glowing sejak sesi pertama",
+   161→      "Tekstur kulit lebih halus dan lembut seperti sutra",
+   162→      "Menyamarkan bekas jerawat dan noda ringan",
+   163→      "Hidrasi mendalam dengan bahan botani premium",
+   164→      "Aman untuk semua jenis kulit, tanpa downtime",
+   165→    ],
+   166→    steps: [
+   167→      { title: "Konsultasi & Analisis Kulit", detail: "dr. Fatri menganalisis kondisi kulit Anda untuk menentukan formula F-Silk Glow yang paling tepat." },
+   168→      { title: "Pembersihan Mendalam", detail: "Kulit dibersihkan dengan rangkaian DEGERA cleanser untuk menyiapkan kanvas sempurna." },
+   169→      { title: "Eksfoliasi Lembut Medis", detail: "Sel-sel kulit mati diangkat dengan formula eksfoliasi lembut yang aman." },
+   170→      { title: "Infus Nutrisi & Masker Botani", detail: "Serum DEGERA diinfuskan ke lapisan kulit, ditutup masker botani menenangkan." },
+   171→    ],
+   172→    duration: "± 75 menit",
+   173→    downtime: "Tidak ada",
+   174→    priceFrom: "Rp 350.000",
+   175→    image: "/images/service-facial.png",
+   176→    faq: [
+   177→      { q: "Apakah F-Silk Glow bisa langsung memancarkan efek glowing?", a: "Ya, mayoritas pasien merasakan kulit lebih cerah dan lembut segera setelah sesi pertama. Efek optimal tercapai setelah 3 sesi rutin." },
+   178→      { q: "Sesering apa sebaiknya menjalani treatment ini?", a: "Kami merekomendasikan 2–4 minggu sekali sebagai perawatan rutin, disesuaikan dengan kondisi kulit Anda." },
+   179→    ],
+   180→  },
+   181→  {
+   182→    slug: "f-peeling-pro",
+   183→    name: "F-Peeling Pro",
+   184→    category: "Signature dr. Fatri",
+   185→    signature: true,
+   186→    tagline: "Chemical peeling presisi untuk kulit yang diperbarui dari dalam.",
+   187→    desc: "F-Peeling Pro adalah chemical peeling medis dengan level keasaman yang dikalibrasi personal oleh dr. Fatri. Prosedur ini mengangkat lapisan kulit mati dan merangsang regenerasi sel baru sehingga kulit lebih halus, cerah, dan kencang. Efektif memperbaiki garis halus, keriput awal, pigmentasi tidak rata, hingga bekas jerawat — dapat dikerjakan pada wajah, leher, ketiak, dan lipatan paha.",
+   188→    benefits: [
+   189→      "Memperbarui sel kulit untuk tampilan lebih muda",
+   190→      "Memudarkan noda hitam, bekas jerawat, dan pigmentasi",
+   191→      "Menghaluskan tekstur dan menyamarkan pori besar",
+   192→      "Merangsang produksi kolagen alami",
+   193→      "Dapat disesuaikan levelnya untuk kulit sensitif",
+   194→    ],
+   195→    steps: [
+   196→      { title: "Evaluasi Tipe Kulit", detail: "Penentuan level peeling (light, medium) berdasarkan analisis dr. Fatri." },
+   197→      { title: "Degreasing", detail: "Permukaan kulit disiapkan agar larutan peeling merata menembus." },
+   198→      { title: "Aplikasi Larutan Peeling", detail: "Larutan medis diaplikasikan presisi dengan waktu kontrol ketat." },
+   199→      { title: "Netralisasi & Penenangan", detail: "Larutan dinetralkan, dilanjutkan soothing gel dan sunblock DEGERA." },
+   200→    ],
+   201→    duration: "± 45 menit",
+   202→    downtime: "1–5 hari (peeling ringan)",
+   203→    priceFrom: "Rp 450.000",
+   204→    image: "/images/service-peeling.png",
+   205→    faq: [
+   206→      { q: "Apakah kulit akan mengelupas banyak?", a: "Tergantung level peeling. Light peeling umumnya hampir tak terlihat; medium peeling mengalami pengelupasan halus 2–4 hari yang dapat ditutupi moisturizer." },
+   207→      { q: "Kapan boleh pakai makeup lagi?", a: "Setelah kulit selesai mengelupas, umumnya 3–5 hari. Kami sarankan makeup mineral yang aman." },
+   208→    ],
+   209→  },
+   210→  {
+   211→    slug: "f-plasma-rejuv",
+   212→    name: "F-Plasma Rejuv",
+   213→    category: "Signature dr. Fatri",
+   214→    signature: true,
+   215→    tagline: "Terapi plasma & PRP: memperbaiki kulit dengan kekuatan tubuh Anda sendiri.",
+   216→    desc: "F-Plasma Rejuv memanfaatkan platelet-rich plasma (PRP) dari darah Anda sendiri yang diolah menjadi kekuatan regenerasi kulit. Kombinasi microneedling dan PRP ini merangsang kolagen dari dalam — memperbaiki tekstur, bekas jerawat, kerutan, dan turgor kulit secara alami tanpa bahan asing.",
+   217→    benefits: [
+   218→      "Regenerasi kulit dengan bahan alami dari tubuh sendiri",
+   219→      "Memperbaiki bekas jerawat dan tekstur kasar",
+   220→      "Mengencangkan dan meremajakan kulit secara bertahap",
+   221→      "Merangsang kolagen & elastin dari dalam",
+   222→      "Hasil yang terus membaik hingga 3 bulan",
+   223→    ],
+   224→    steps: [
+   225→      { title: "Pengambilan Darah", detail: "Sampel darah kecil diambil dengan standar medis steril." },
+   226→      { title: "Sentrifugasi Plasma", detail: "Plasma kaya trombosit dipisahkan dengan sentrifuse medis." },
+   227→      { title: "Microneedling", detail: "Micro-channel dibuat pada kulit untuk penyerapan optimal." },
+   228→      { title: "Aplikasi PRP", detail: "Plasma emas diaplikasikan menembus ke lapisan dermis." },
+   229→    ],
+   230→    duration: "± 60 menit",
+   231→    downtime: "1–3 hari (kemerahan ringan)",
+   232→    priceFrom: "Rp 750.000",
+   233→    image: "/images/service-injection.png",
+   234→    faq: [
+   235→      { q: "Apakah prosedurnya menyakitkan?", a: "Kami mengaplikasikan krim biang numbing 30 menit sebelumnya sehingga nyeri minimal. Pasien umumnya hanya merasakan sensasi keringat dingin ringan." },
+   236→      { q: "Berapa sesi yang dibutuhkan?", a: "Untuk bekas jerawat: 3–4 sesi dengan jarak 4 minggu. Untuk rejuvenasi umum: 2–3 sesi sudah terasa signifikan." },
+   237→    ],
+   238→  },
+   239→  {
+   240→    slug: "f-lift-ultra",
+   241→    name: "F-Lift Ultra",
+   242→    category: "Signature dr. Fatri",
+   243→    signature: true,
+   244→    tagline: "Kombinasi thread & HIFU untuk pengencangan wajah tanpa bedah.",
+   245→    desc: "F-Lift Ultra adalah protokol lifting eksklusif DEGERASIA yang menggabungkan kekuatan thread lift biokompatibel dan HIFU (High-Intensity Focused Ultrasound). Hasilnya: kontur wajah terangkat, garis rahang tegas, dan efek V-shape alami — tanpa pisau bedah dan tanpa masa pemulihan panjang.",
+   246→    benefits: [
+   247→      "Efek lifting segera yang terus membaik 2–3 bulan",
+   248→      "Kontur V-shape dan garis rahang lebih tegas",
+   249→      "Merangsang kolagen baru secara berkelanjutan",
+   250→      "Tanpa operasi, tanpa luka besar",
+   251→      "Hasil bertahan 12–18 bulan",
+   252→    ],
+   253→    steps: [
+   254→      { title: "Pemetaan Area Lifting", detail: "dr. Fatri memetakan titik dan vektor pengangkatan sesuai anatomi wajah." },
+   255→      { title: "Anestesi Lokal", detail: "Area treatment dibiaskan agar prosedur nyaman." },
+   256→      { title: "Penempatan Thread", detail: "Thread PDO yang aman ditempatkan presisi di bawah kulit." },
+   257→      { title: "Finishing dengan HIFU", detail: "HIFU mengunci hasil dengan pengencangan pada lapisan SMAS." },
+   258→    ],
+   259→    duration: "± 90 menit",
+   260→    downtime: "2–7 hari (bengkak ringan)",
+   261→    priceFrom: "Rp 3.500.000",
+   262→    image: "/images/service-contour.png",
+   263→    faq: [
+   264→      { q: "Apakah hasilnya langsung terlihat?", a: "Ya, efek pengangkatan langsung terlihat setelah prosedur, lalu membaik maksimal pada bulan ke-2–3 seiring pembentukan kolagen baru." },
+   265→      { q: "Apakah thread perlu diambil kembali?", a: "Tidak. Thread PDO yang kami gunakan terdegradasi alami dalam 6–9 bulan, namun efek kolagennya bertahan jauh lebih lama." },
+   266→    ],
+   267→  },
+   268→  {
+   269→    slug: "signature-facial",
+   270→    name: "DEGERASIA Signature Facial",
+   271→    category: "Perawatan Wajah & Kulit",
+   272→    signature: false,
+   273→    tagline: "Facial medis mewah dengan sentuhan botani DEGERA.",
+   274→    desc: "Facial klasik dengan standar medis: pembersihan mendalam, ekstraksi higienis, pijatan limfatik, dan masker botani. Ritual 60 menit yang mengembalikan kesegaran kulit sekaligus relaksasi pikiran.",
+   275→    benefits: [
+   276→      "Mengangkat komedo dan kotoran membandel",
+   277→      "Melancarkan sirkulasi darah wajah",
+   278→      "Kulit bersih, segar, dan bercahaya",
+   279→      "Relaksasi otot wajah yang tegang",
+   280→    ],
+   281→    steps: [
+   282→      { title: "Double Cleansing", detail: "Pembersihan menyeluruh dengan rangkaian DEGERA." },
+   283→      { title: "Ekstraksi Higienis", detail: "Komedo dan blackhead diangkat dengan teknik steril." },
+   284→      { title: "Pijat Limfatik", detail: "Pijatan wajah meredakan bengkak dan menyegarkan." },
+   285→      { title: "Masker & Pelembap", detail: "Ditutup masker botani dan hidrasi DEGERA." },
+   286→    ],
+   287→    duration: "± 60 menit",
+   288→    downtime: "Tidak ada",
+   289→    priceFrom: "Rp 250.000",
+   290→    image: "/images/service-facial.png",
+   291→    faq: [
+   292→      { q: "Bisa sekamar berdua dengan teman?", a: "Bisa! Kami memiliki suite facial ganda — cocok untuk momen self-care bersama." },
+   293→    ],
+   294→  },
+   295→  {
+   296→    slug: "hydra-glow-booster",
+   297→    name: "Hydra Glow Skin Booster",
+   298→    category: "Perawatan Wajah & Kulit",
+   299→    signature: false,
+   300→    tagline: "Hidrasi mendalam hingga lapisan dermis untuk kulitkenyal kenyal.",
+   301→    desc: "Skin booster berbahan dasar hyaluronic acid non-crosslinked yang diinjeksikan mikro ke seluruh wajah. Hasilnya bukan sekadar lembap di permukaan, melainkan hidrasi sejati dari dalam: kulit kenyal, glowing, dan pori tampak halus.",
+   302→    benefits: [
+   303→      "Hidrasi ekstra dari lapisan dalam kulit",
+   304→      "Kulit lebih kenyal dan glowing",
+   305→      "Memperbaiki kulit kusam dan dehidrasi",
+   306→      "Menyamarkan pori dan garis halus",
+   307→    ],
+   308→    steps: [
+   309→      { title: "Numbing Cream", detail: "Krim biang diaplikasikan 20–30 menit." },
+   310→      { title: "Mikroinjeksi HA", detail: "Injeksi mikro titik-titik strategis di seluruh wajah." },
+   311→      { title: "Penenangan", detail: "Soothing masker untuk meredakan kemerahan." },
+   312→    ],
+   313→    duration: "± 45 menit",
+   314→    downtime: "1–2 hari (titik suntik kecil)",
+   315→    priceFrom: "Rp 1.200.000",
+   316→    image: "/images/service-injection.png",
+   317→    faq: [
+   318→      { q: "Berapa lama hasilnya bertahan?", a: "6–9 bulan. Perawatan lanjutan setiap 6 bulan menjaga efek optimal." },
+   319→    ],
+   320→  },
+   321→  {
+   322→    slug: "acne-solution",
+   323→    name: "DEGERA Acne Solution",
+   324→    category: "Perawatan Wajah & Kulit",
+   325→    signature: false,
+   326→    tagline: "Program komprehensif menangani jerawat dari akar penyebabnya.",
+   327→    desc: "Program medis holistik untuk kulit berjerawat: kombinasi tindakan klinik, produk DEGERA Acne Line (Acne Wash, Toner Acne, Milk Cleanser Acne), dan penyesuaian gaya hidup. Dengan pendekatan bertahap, jerawat diredakan, bekasnya diperbaiki, dan kulit kembali sehat.",
+   328→    benefits: [
+   329→      "Menekan aktivitas jerawat aktif secara medis",
+   330→      "Mencegah bekas dan flek hitam",
+   331→      "Memperbaiki tekstur kulit pasca-jerawat",
+   332→      "Homecare DEGERA yang konsisten dengan tindakan klinik",
+   333→    ],
+   334→    steps: [
+   335→      { title: "Konsultasi Akar Masalah", detail: "Analisis hormonal, gaya hidup, dan kondisi kulit." },
+   336→      { title: "Tindakan Klinik", detail: "Komedo ekstraksi medis dan/atau peeling jerawat." },
+   337→      { title: "Homecare DEGERA", detail: "Rangkaian Acne Line dirumuskan khusus untuk kulit berjerawat." },
+   338→      { title: "Evaluasi Berkala", detail: "Progress di-monitor tiap 2–4 minggu oleh dr. Fatri." },
+   339→    ],
+   340→    duration: "Program 4–12 minggu",
+   341→    downtime: "Sesuai tindakan",
+   342→    priceFrom: "Rp 550.000",
+   343→    image: "/images/treatment-moment.png",
+   344→    faq: [
+   345→      { q: "Apakah harus beli produk DEGERA juga?", a: "Kami sangat menyarankan, karena konsistensi homecare menentukan 60% keberhasilan program. Produk dapat dipilih sesuai budget." },
+   346→    ],
+   347→  },
+   348→  {
+   349→    slug: "brightening-program",
+   350→    name: "Brightening & Pigmentation",
+   351→    category: "Perawatan Wajah & Kulit",
+   352→    signature: false,
+   353→    tagline: "Mencerahkan dengan aman, menyamarkan noda secara medis.",
+   354→    desc: "Program pencerahan bertahap untuk melasma, flek hitam, dan kulit kusam: kombinasi laser lembut, mesotherapy pencerah, skincare aktif, dan proteksi matahari. Semua dengan protokol aman untuk kulit tropis Indonesia.",
+   355→    benefits: [
+   356→      "Memudarkan melasma dan flek hitam bertahap",
+   357→      "Mencerahkan tone kulit merata",
+   358→      "Mencegah pigmentasi kambuh",
+   359→      "Protokol aman untuk iklim tropis",
+   360→    ],
+   361→    steps: [
+   362→      { title: "Analisis Pigmentasi", detail: "Identifikasi kedalaman dan tipe noda." },
+   363→      { title: "Tindakan Klinik", detail: "Laser / mesotherapy / peeling sesuai indikasi." },
+   364→      { title: "Skincare Aktif", detail: "Serum dan night cream DEGERA dengan bahan pencerah." },
+   365→      { title: "Sun Protection", detail: "Edukasi dan sunscreen DEGERA wajib." },
+   366→    ],
+   367→    duration: "Program 6–12 minggu",
+   368→    downtime: "Minimal",
+   369→    priceFrom: "Rp 650.000",
+   370→    image: "/images/service-peeling.png",
+   371→    faq: [
+   372→      { q: "Apakah melasma bisa hilang total?", a: "Melasma bersifat kronis — kami berupaya memudarkannya signifikan dan menjaganya stabil, bukan sekadar perbaikan sesaat." },
+   373→    ],
+   374→  },
+   375→  {
+   376→    slug: "laser-hair-removal",
+   377→    name: "Laser Hair Removal",
+   378→    category: "Perawatan Wajah & Kulit",
+   379→    signature: false,
+   380→    tagline: "Bebas dari bulu tak diinginkan dengan laser yang nyaman.",
+   381→    desc: "Penghilangan bulu permanen jangka panjang dengan teknologi laser yang dilengkapi pendingin kulit sehingga nyaman bahkan untuk area sensitif. Cocok untuk wajah, ketiak, kaki, tangan, dan area kewanitaan.",
+   382→    benefits: [
+   383→      "Penurunan pertumbuhan bulu jangka panjang",
+   384→      "Tidak ada iritasi seperti mencukur/waxing",
+   385→      "Nyaman dengan sistem pendingin",
+   386→      "Cocok untuk berbagai area tubuh",
+   387→    ],
+   388→    steps: [
+   389→      { title: "Cukur Area", detail: "Area treatment dicukur bersih sebelum sesi." },
+   390→      { title: "Aplikasi Laser", detail: "Laser diarahkan menyeluruh dengan pendinginan." },
+   391→      { title: "Soothing Gel", detail: "Gel penenangan dan instruksi perawatan pasca." },
+   392→    ],
+   393→    duration: "15–60 menit",
+   394→    downtime: "Tidak ada",
+   395→    priceFrom: "Rp 300.000",
+   396→    image: "/images/service-laser.png",
+   397→    faq: [
+   398→      { q: "Berapa sesi sampai bulu berhenti tumbuh?", a: "Umumnya 6–8 sesi dengan jarak 4–6 minggu untuk hasil optimal, karena siklus tumbuh bulu bertahap." },
+   399→    ],
+   400→  },
+   401→  {
+   402→    slug: "botox",
+   403→    name: "Botox & Anti-Wrinkle",
+   404→    category: "Anti-Aging & Kontur",
+   405→    signature: false,
+   406→    tagline: "Haluskan garis ekspresi, tampil segar tetap natural.",
+   407→    desc: "Injeksi botulinum toxin berteknologi terkini untuk merelaksasi garis ekspresi: dahi, sekitar mata, dan sekitar mulut. Dosis presisi dr. Fatri menjaga ekspresi tetap hidup — tidak kaku, tidak aneh, cukup segar dan bersih.",
+   408→    benefits: [
+   409→      "Menghaluskan kerutan dahi dan crow's feet",
+   410→      "Efek mulai terlihat 3–7 hari, penuh 2 minggu",
+   411→      "Dosis presisi — ekspresi tetap natural",
+   412→      "Mencegah kerutan lebih dalam di masa depan",
+   413→    ],
+   414→    steps: [
+   415→      { title: "Analisis Ekspresi", detail: "Pemetaan otot saat bergerak agar hasil natural." },
+   416→      { title: "Injeksi Presisi", detail: "Suntikan mikro dengan dosis terukur." },
+   417→      { title: "Instruksi Pasca", detail: "Edukasi posisi tidur & larangan 4 jam pertama." },
+   418→    ],
+   419→    duration: "± 30 menit",
+   420→    downtime: "Tidak ada",
+   421→    priceFrom: "Rp 900.000",
+   422→    image: "/images/service-injection.png",
+   423→    faq: [
+   424→      { q: "Berapa lama bertahan?", a: "4–6 bulan. Pengulangan rutin membuat efek semakin efisien karena otot 'terlatih' rileks." },
+   425→      { q: "Apakah wajah jadi kaku?", a: "Tidak, jika dosis dan titiknya tepat. Ini keahlian dr. Fatri: hasil fresh tanpa ekspresi beku." },
+   426→    ],
+   427→  },
+   428→  {
+   429→    slug: "dermal-filler",
+   430→    name: "Dermal Filler & Kontur",
+   431→    category: "Anti-Aging & Kontur",
+   432→    signature: false,
+   433→    tagline: "Bentuk bibir, dagu, dan pipi sesuai rasio kecantikan Anda.",
+   434→    desc: "Dermal filler hyaluronic acid premium untuk menambah volume dan membentuk kontur: bibir fuller alami, dagu lebih tegas, pipi proporsional, serta mengoreksi wajah asimetris. Semua dihitung dengan rasio estetika personal.",
+   435→    benefits: [
+   436→      "Bibir fuller dengan hasil natural",
+   437→      "Dagu dan garis rahang lebih tegas",
+   438→      "Koreksi asimetri wajah",
+   439→      "Hasil instan dan bertahan 9–18 bulan",
+   440→    ],
+   441→    steps: [
+   442→      { title: "Desain Kontur", detail: "Simulasi dan diskusi bentuk yang Anda inginkan." },
+   443→      { title: "Anestesi", detail: "Krim numbing atau blok kecil untuk kenyamanan." },
+   444→      { title: "Injeksi Filler", detail: "Teknik kanula/needle sesuai area, presisi per layer." },
+   445→      { title: "Evaluasi Hasil", detail: "Cek simetri dan koreksi final di tempat." },
+   446→    ],
+   447→    duration: "± 45 menit",
+   448→    downtime: "1–3 hari (bengkak ringan)",
+   449→    priceFrom: "Rp 1.500.000",
+   450→    image: "/images/service-contour.png",
+   451→    faq: [
+   452→      { q: "Apakah bibir akan terlihat 'over'?", a: "Tidak — prinsip kami adalah natural enhancement. Anda bisa mulai 0.5–1 ml lalu evaluasi." },
+   453→      { q: "Apakah filler bisa dilepas?", a: "Ya, filler HA dapat dilarutkan dengan enzim hialuronidase bila diperlukan." },
+   454→    ],
+   455→  },
+   456→  {
+   457→    slug: "thread-lift",
+   458→    name: "Thread Lift",
+   459→    category: "Anti-Aging & Kontur",
+   460→    signature: false,
+   461→    tagline: "Pengangkatan wajah instan tanpa pisau bedah.",
+   462→    desc: "Thread lift menggunakan benang PDO yang ditempatkan di bawah kulit untuk mengangkat jaringan yang mengendur sekaligus merangsang kolagen. Efek lifting terlihat segera dan membaik seiring waktu.",
+   463→    benefits: [
+   464→      "Efek terangkat langsung setelah prosedur",
+   465→      "Merangsang produksi kolagen sendiri",
+   466→      "Alternatif mini face-lift tanpa operasi",
+   467→      "Hasil bertahan 12–18 bulan",
+   468→    ],
+   469→    steps: [
+   470→      { title: "Pemetaan Vektor", detail: "Arah pengangkatan disesuaikan anatomi." },
+   471→      { title: "Anestesi Lokal", detail: "Area kerja dibiaskan penuh." },
+   472→      { title: "Penempatan Thread", detail: "Thread dimasukkan dan dikunci presisi." },
+   473→    ],
+   474→    duration: "± 60 menit",
+   475→    downtime: "3–7 hari",
+   476→    priceFrom: "Rp 2.500.000",
+   477→    image: "/images/service-contour.png",
+   478→    faq: [
+   479→      { q: "Apakah ada bekas luka?", a: "Tidak ada bekas — hanya titik masuk jarum kecil yang sembuh beberapa hari." },
+   480→    ],
+   481→  },
+   482→  {
+   483→    slug: "hifu-lifting",
+   484→    name: "HIFU Ultra Lifting",
+   485→    category: "Anti-Aging & Kontur",
+   486→    signature: false,
+   487→    tagline: "Ultrasound fokus yang mengencangkan dari lapisan SMAS.",
+   488→    desc: "HIFU menembus energi ultrasound tepat ke lapisan SMAS — lapisan yang diangkat dalam operasi facelift — tanpa melukai permukaan. Satu sesi memberi efek pengencangan progresif hingga 3 bulan.",
+   489→    benefits: [
+   490→      "Pengencangan dari lapisan terdalam",
+   491→      "Sesi tunggal dengan hasil progresif",
+   492→      "Tidak ada jeda aktivitas sama sekali",
+   493→      "Efektif untuk wajah & leher",
+   494→    ],
+   495→    steps: [
+   496→      { title: "Pemetaan Treatment", detail: "Grid area diwajah dan leher." },
+   497→      { title: "Penembakan HIFU", detail: "Energi diarahkan ke kedalaman SMAS." },
+   498→      { title: "Selesai & Aktivitas Normal", detail: "Langsung bisa beraktivitas seperti biasa." },
+   499→    ],
+   500→    duration: "± 60–90 menit",
+   501→    downtime: "Tidak ada",
+   502→    priceFrom: "Rp 1.800.000",
+   503→    image: "/images/service-laser.png",
+   504→    faq: [
+   505→      { q: "Kapan hasilnya terlihat maksimal?", a: "Sedikit terasa setelah sesi, optimal pada bulan ke-2–3 seiring pembentukan kolagen baru." },
+   506→    ],
+   507→  },
+   508→];
+   509→
+   510→/* ── Produk DEGERA (21 Produk BPOM Riil) ───────────────────── */
+   511→
+   512→export const PRODUCT_CATEGORIES: ProductCategory[] = [
+   513→  "Cleanser",
+   514→  "Toner",
+   515→  "Serum",
+   516→  "Cream",
+   517→  "Sunscreen",
+   518→  "Istimewa",
+   519→];
+   520→
+   521→export const PRODUCTS: Product[] = [
+   522→  {
+   523→    slug: "bb-cream",
+   524→    name: "Degera BB Cream",
+   525→    bpom: "NA18220300328",
+   526→    registered: "2022",
+   527→    category: "Istimewa",
+   528→    packaging: "Botol 10 g / 15 g / 30 g",
+   529→    price: 85000,
+   530→    desc: "BB cream 2-in-1 yang merawat sambil menutupi. Perlindungan ringan dengan finish natural — kulit tampak sehat merata tanpa kesan tebal.",
+   531→    usage: "Aplikasikan secukupnya di wajah setelah moisturizer, ratakan merata.",
+   532→    ingredients: "Titanium Dioxide, Niacinamide, Vitamin E",
+   533→    image: "/images/degera-bbcream.png",
+   534→    badge: "Terlaris",
+   535→  },
+   536→  {
+   537→    slug: "jra-cream",
+   538→    name: "Degera J'Ra Cream",
+   539→    bpom: "NA18220106439",
+   540→    registered: "2022",
+   541→    category: "Cream",
+   542→    packaging: "Pot 12,5 g / 15 g",
+   543→    price: 55000,
+   544→    desc: "Cream siang formula J'Ra legendaris: mencerahkan, melembapkan, dan melindungi kulit dari polusi. Aroma botani khas yang menenangkan.",
+   545→    usage: "Gunakan tiap pagi setelah toner, di area wajah dan leher.",
+   546→    ingredients: "Niacinamide, Rice Extract, Allantoin",
+   547→    image: "/images/degera-cream.png",
+   548→    badge: "Favorit",
+   549→  },
+   550→  {
+   551→    slug: "sunscreen-free-oily",
+   552→    name: "Degera Sunscreen Free Oily",
+   553→    bpom: "NA18221701115",
+   554→    registered: "2022",
+   555→    category: "Sunscreen",
+   556→    packaging: "Pot 12,5 g / 15 g",
+   557→    price: 55000,
+   558→    desc: "Dirancang khusus kulit berminyak: oil-free, matte finish, dan tidak menyumbat pori. Perlindungan UV penuh tanpa rasa lengket.",
+   559→    usage: "Aplikasikan tiap pagi dan ulangi setiap 3–4 jam saat aktivitas luar ruangan.",
+   560→    ingredients: "Octinoxate, Zinc Oxide, Niacinamide",
+   561→    image: "/images/degera-sunscreen.png",
+   562→  },
+   563→  {
+   564→    slug: "milk-cleanser",
+   565→    name: "Degera Milk Cleanser",
+   566→    bpom: "NA18221204376",
+   567→    registered: "2022",
+   568→    category: "Cleanser",
+   569→    packaging: "Botol 100 mL",
+   570→    price: 55000,
+   571→    desc: "Cleanser susu lembut yang melarutkan makeup dan kotoran tanpa merusak moisture barrier. Sensasi lembut seperti perawatan spa.",
+   572→    usage: "Oleskan pada wajah kering, pijat lembut, bilas atau angkat dengan kapas.",
+   573→    ingredients: "Milk Protein, Glycerin, Aloe Vera",
+   574→    image: "/images/degera-cleanser.png",
+   575→  },
+   576→  {
+   577→    slug: "aha-cleanser-cair",
+   578→    name: "Degera AHA Cleanser Cair",
+   579→    bpom: "NA18221204379",
+   580→    registered: "2022",
+   581→    category: "Cleanser",
+   582→    packaging: "Botol 100 mL",
+   583→    price: 55000,
+   584→    desc: "Pembersih dengan AHA lembut yang mengeksfoliasi saat mencuci — tekstur kulit lebih halus dan tone merata sejak pemakaian rutin.",
+   585→    usage: "Gunakan 1–2x sehari, pijat 30–60 detik lalu bilas.",
+   586→    ingredients: "Glycolic Acid, Lactic Acid, Glycerin",
+   587→    image: "/images/degera-cleanser.png",
+   588→  },
+   589→  {
+   590→    slug: "toner-2-in-1",
+   591→    name: "Degera Toner 2 IN 1",
+   592→    bpom: "NA18221204375",
+   593→    registered: "2022",
+   594→    category: "Toner",
+   595→    packaging: "Botol 100 mL",
+   596→    price: 55000,
+   597→    desc: "Dua fungsi dalam satu botol: menyeimbangkan pH setelah cuci muka sekaligus mengecilkan tampilan pori. Dasar sempurna sebelum serum.",
+   598→    usage: "Tuang di kapas, tepuk lembut ke wajah setelah membersihkan.",
+   599→    ingredients: "Witch Hazel, Niacinamide, Panthenol",
+   600→    image: "/images/degera-toner.png",
+   601→  },
+   602→  {
+   603→    slug: "cleanser-gel",
+   604→    name: "Degera Cleanser Gel",
+   605→    bpom: "NA18221204954",
+   606→    registered: "2022",
+   607→    category: "Cleanser",
+   608→    packaging: "Botol 100 mL",
+   609→    price: 55000,
+   610→    desc: "Gel pembersih segar yang mengangkat minyak berlebih tanpa membuat kulit tertarik-ketarik. Ideal untuk kulit kombinasi dan berminyak.",
+   611→    usage: "Gunakan pagi dan malam, bilas dengan air hangat.",
+   612→    ingredients: "Salicylic Acid, Tea Tree, Glycerin",
+   613→    image: "/images/degera-cleanser.png",
+   614→  },
+   615→  {
+   616→    slug: "serum-gold",
+   617→    name: "Degera Serum Gold",
+   618→    bpom: "NA18222000387",
+   619→    registered: "2022",
+   620→    category: "Serum",
+   621→    packaging: "Botol 15 mL / 20 mL",
+   622→    price: 120000,
+   623→    desc: "Mahakarya DEGERA: serum emas dengan peptida dan antioksidan premium yang memperbaiki kulit semalaman. Bangun dengan kulit lebih kenyal dan berkilau sehat.",
+   624→    usage: "Teteskan 3–4 tetes di malam hari setelah toner, tepuk hingga menyerap.",
+   625→    ingredients: "Peptide Complex, Gold Colloid, Vitamin C",
+   626→    image: "/images/degera-serum.png",
+   627→    badge: "Premium",
+   628→  },
+   629→  {
+   630→    slug: "glowing-bb-cream",
+   631→    name: "Degera Glowing BB Cream",
+   632→    bpom: "NA18220300590",
+   633→    registered: "2022",
+   634→    category: "Istimewa",
+   635→    packaging: "Pot 10 g",
+   636→    price: 85000,
+   637→    desc: "Versi glowing dari BB cream ikonik kami — finish luminous dewy seperti baru selesai treatment di klinik. Coverage ringan yang terasa seperti tak ada.",
+   638→    usage: "Aplikasikan setelah skincare pagi, ratakan dengan spons atau jari.",
+   639→    ingredients: "Niacinamide, Mica, Vitamin E",
+   640→    image: "/images/degera-bbcream.png",
+   641→  },
+   642→  {
+   643→    slug: "toner-acne",
+   644→    name: "Degera Toner Acne",
+   645→    bpom: "NA18231206431",
+   646→    registered: "2023",
+   647→    category: "Toner",
+   648→    packaging: "Botol 100 mL",
+   649→    price: 55000,
+   650→    desc: "Toner khusus kulit berjerawat dengan bahan anti-bakteri alami yang menenangkan kemerahan dan mencegah jerawat baru muncul.",
+   651→    usage: "Tepukkan dengan kapas pada area jerawat, 2x sehari.",
+   652→    ingredients: "Salicylic Acid, Tea Tree, Centella Asiatica",
+   653→    image: "/images/degera-toner.png",
+   654→  },
+   655→  {
+   656→    slug: "acne-wash",
+   657→    name: "Degera Acne Wash",
+   658→    bpom: "NA18231206432",
+   659→    registered: "2023",
+   660→    category: "Cleanser",
+   661→    packaging: "Botol 100 mL",
+   662→    price: 55000,
+   663→    desc: "Pembersih medis untuk kulit berjerawat aktif. Membersihkan bakteri penyebab jerawat sambil menjaga keseimbangan kulit.",
+   664→    usage: "Gunakan 2x sehari pada wajah yang lembap, bilas hingga bersih.",
+   665→    ingredients: "Salicylic Acid, Tea Tree Oil, Zinc PCA",
+   666→    image: "/images/degera-cleanser.png",
+   667→  },
+   668→  {
+   669→    slug: "milk-cleanser-acne",
+   670→    name: "Degera Milk Cleanser Acne",
+   671→    bpom: "NA18211204004",
+   672→    registered: "2024",
+   673→    category: "Cleanser",
+   674→    packaging: "Botol 100 mL",
+   675→    price: 55000,
+   676→    desc: "Untuk kulit berjerawat sekaligus kering: kelembutan susu yang membersihkan tanpa mengeringkan, diformulasikan aman untuk kulit sensitif.",
+   677→    usage: "Gunakan pada malam hari, ikuti dengan Toner Acne.",
+   678→    ingredients: "Milk Protein, Centella, Allantoin",
+   679→    image: "/images/degera-cleanser.png",
+   680→  },
+   681→  {
+   682→    slug: "sunblock-n",
+   683→    name: "Degera Sunblock N",
+   684→    bpom: "NA18241702963",
+   685→    registered: "2024",
+   686→    category: "Sunscreen",
+   687→    packaging: "Pot 10 g",
+   688→    price: 65000,
+   689→    desc: "Sunblock netral untuk semua jenis kulit dengan proteksi spektrum luas. Ringan, cepat serap, cocok sebagai lapisan terakhir skincare pagi.",
+   690→    usage: "Aplikasikan setiap pagi sebagai langkah terakhir.",
+   691→    ingredients: "Zinc Oxide, Titanium Dioxide, Vitamin E",
+   692→    image: "/images/degera-sunscreen.png",
+   693→  },
+   694→  {
+   695→    slug: "jra-night-cream",
+   696→    name: "Degera JRA Night Cream",
+   697→    bpom: "NA18240116611",
+   698→    registered: "2024",
+   699→    category: "Cream",
+   700→    packaging: "Pot 10 g",
+   701→    price: 65000,
+   702→    desc: "Formula malam J'Ra yang bekerja saat Anda tidur: memperbaiki, mencerahkan, dan meremajakan. Pagi hari kulit terasa lebih plump dan cerah.",
+   703→    usage: "Oleskan pada malam hari setelah serum.",
+   704→    ingredients: "Retinyl Palmitate, Niacinamide, Squalane",
+   705→    image: "/images/degera-nightcream.png",
+   706→  },
+   707→  {
+   708→    slug: "night-cream",
+   709→    name: "Degera Night Cream",
+   710→    bpom: "NA18240116613",
+   711→    registered: "2024",
+   712→    category: "Cream",
+   713→    packaging: "Pot 10 g",
+   714→    price: 75000,
+   715→    desc: "Night cream klasik DEGERA yang dipercaya ribuan pasien: nutrisi mendalam semalaman untuk kulit lembut, cerah, dan terawat.",
+   716→    usage: "Gunakan setiap malam setelah toner/serum.",
+   717→    ingredients: "Vitamin C, Collagen, Aloe Vera",
+   718→    image: "/images/degera-nightcream.png",
+   719→    badge: "Favorit",
+   720→  },
+   721→  {
+   722→    slug: "night-lotion-premium",
+   723→    name: "Degera Night Lotion Premium",
+   724→    bpom: "NA18240117037",
+   725→    registered: "2024",
+   726→    category: "Cream",
+   727→    packaging: "Botol 100 mL",
+   728→    price: 150000,
+   729→    desc: "Lotion malam premium dengan tekstur ringan namun nutrisi melimpah. Perawatan anti-aging menyeluruh untuk wajah dan leher.",
+   730→    usage: "Oleskan merata pada wajah dan leher tiap malam.",
+   731→    ingredients: "Peptide, Hyaluronic Acid, Ceramide",
+   732→    image: "/images/degera-lotion.png",
+   733→    badge: "Premium",
+   734→  },
+   735→  {
+   736→    slug: "facial-foam",
+   737→    name: "Degera Facial Foam",
+   738→    bpom: "NA18241209795",
+   739→    registered: "2024",
+   740→    category: "Cleanser",
+   741→    packaging: "Botol 100 mL",
+   742→    price: 85000,
+   743→    desc: "Busa lembut yang melimpah membersihkan hingga ke pori, meninggalkan rasa bersih segar tanpa kesan tertarik.",
+   744→    usage: "Bentuk busa dengan air, pijat wajah, bilas bersih.",
+   745→    ingredients: "Amino Acid Surfactant, Glycerin, Green Tea",
+   746→    image: "/images/degera-facialfoam.png",
+   747→  },
+   748→  {
+   749→    slug: "cleansing-toner",
+   750→    name: "Degera Cleansing Toner",
+   751→    bpom: "NA18241209796",
+   752→    registered: "2024",
+   753→    category: "Toner",
+   754→    packaging: "Botol 100 mL",
+   755→    price: 60000,
+   756→    desc: "Toner pembersih yang menyisir sisa makeup dan kotoran yang lolos — langkah terakhir pembersihan, sekaligus persiapan penyerapan maksimal.",
+   757→    usage: "Basahi kapas, usapkan lembut menyeluruh setelah cuci muka.",
+   758→    ingredients: "Cucumber Extract, Panthenol, Allantoin",
+   759→    image: "/images/degera-toner.png",
+   760→  },
+   761→  {
+   762→    slug: "body-whitening-premium",
+   763→    name: "Degera Body Whitening Premium",
+   764→    bpom: "NA18240117016",
+   765→    registered: "2024",
+   766→    category: "Istimewa",
+   767→    packaging: "Botol 100 mL",
+   768→    price: 75000,
+   769→    desc: "Lotion pencerah badan premium untuk kulit tubuh yang lebih cerah, lembut, dan beraroma botani mewah. Pilihan favorit pasien program glowing.",
+   770→    usage: "Aplikasikan pada badan setelah mandi, fokus area gelap.",
+   771→    ingredients: "Niacinamide, Kojic Acid, Shea Butter",
+   772→    image: "/images/degera-lotion.png",
+   773→  },
+   774→  {
+   775→    slug: "jra-serum",
+   776→    name: "Degera JRA Serum",
+   777→    bpom: "NA18250104738",
+   778→    registered: "2025",
+   779→    category: "Serum",
+   780→    packaging: "Botol 10 mL",
+   781→    price: 100000,
+   782→    desc: "Seri J'Ra terbaru: serum konsentrat dengan bahan aktif pencerah dan anti-aging dalam botol mungil. Perawatan intensif untuk area yang butuh fokus.",
+   783→    usage: "Teteskan pada area bermasalah atau seluruh wajah di malam hari.",
+   784→    ingredients: "Niacinamide, Peptide, Alpha Arbutin",
+   785→    image: "/images/degera-serum.png",
+   786→    badge: "Baru",
+   787→  },
+   788→  {
+   789→    slug: "sunscreen-moist",
+   790→    name: "Degera Sunscreen Moist",
+   791→    bpom: "NA18251700876",
+   792→    registered: "2025",
+   793→    category: "Sunscreen",
+   794→    packaging: "Pot 10 g",
+   795→    price: 65000,
+   796→    desc: "Untuk kulit kering dan normal: sunscreen dengan kelembapan ekstra yang membuat kulit tetap nyaman, sehat, dan bercahaya sepanjang hari.",
+   797→    usage: "Gunakan tiap pagi, ulangi setelah 3–4 jam.",
+   798→    ingredients: "Hyaluronic Acid, Zinc Oxide, Squalane",
+   799→    image: "/images/degera-sunscreen.png",
+   800→    badge: "Baru",
+   801→  },
+   802→];
+   803→
+   804→/* ── Artikel / Journal ─────────────────────────────────────── */
+   805→
+   806→export const ARTICLES: Article[] = [
+   807→  {
+   808→    slug: "urutan-skincare-malam",
+   809→    title: "Urutan Skincare Malam yang Benar: Panduan dari Dokter Kecantikan",
+   810→    category: "Edukasi Skincare",
+   811→    excerpt:
+   812→      "Rangkaian skincare yang bagus bisa sia-sia jika urutannya salah. dr. Fatri menjelaskan urutan malam yang benar beserta alasannya.",
+   813→    date: "2025-01-12",
+   814→    readTime: "6 menit",
+   815→    cover: "/images/article-skincare.jpg",
+   816→    author: "Dr. Fatri Idana, M.Biomed., AAM",
+   817→    sections: [
+   818→      {
+   819→        heading: "Mengapa Urutan Itu Penting",
+   820→        body: [
+   821→          "Kulit kita menyerap bahan aktif dengan aturan: yang paling tipis dulu, yang paling tebal belakangan. Ketika urutan terbalik — misalnya cream dipakai sebelum serum — molekul besar di cream akan 'mengunci' dan mencegah serum bekerja optimal.",
+   822→          "Prinsipnya sederhana: pembersihan → penyeimbangan → perbaikan (serum aktif) → pelembapan (cream) → perlindungan (jika pagi). Malam hari adalah saat regenerasi kulit puncak, sehingga produk perbaikan paling efektif diaplikasikan di sini.",
+   823→        ],
+   824→      },
+   825→      {
+   826→        heading: "Urutan Malam yang Kami Rekomendasikan",
+   827→        body: [
+   828→          "Langkah 1 — Makeup Remover / Cleansing: untuk pengguna makeup atau sunscreen tahan air, mulailah dengan cleansing oil atau Degera Milk Cleanser, lalu lanjut facial foam atau cleanser gel.",
+   829→          "Langkah 2 — Toner: Degera Toner 2 IN 1 menyeimbangkan pH yang tergeser setelah mencuci muka, sekaligus mempersiapkan kulit menyerap serum lebih baik.",
+   830→          "Langkah 3 — Serum Aktif: Di sinilah perbaikan terjadi. Degera Serum Gold dengan peptida untuk anti-aging, atau JRA Serum untuk pencerahan fokus. Tepuk lembut, tunggu 1–2 menit.",
+   831→          "Langkah 4 — Night Cream: Degera Night Cream atau Night Lotion Premium mengunci semua bahan aktif sebelumnya dan memberi nutrisi semalaman.",
+   832→        ],
+   833→      },
+   834→      {
+   835→        heading: "Kesalahan yang Saya Temui di Klinik",
+   836→        body: [
+   837→          "Kesalahan paling umum: terlalu banyak produk sekaligus. Kulit yang 'jenuh' akan bereaksi dengan iritasi atau jerawat. Mulailah minimalis — cleanser, toner, satu serum, night cream — lalu tambahkan bertahap.",
+   838→          "Kesalahan kedua: tidak konsisten. Bahan aktif bekerja dengan siklus regenerasi kulit 28 hari. Beri setiap produk waktu minimal 4–6 minggu sebelum menilai hasilnya.",
+   839→        ],
+   840→      },
+   841→      {
+   842→        heading: "Penutup",
+   843→        body: [
+   844→          "Skincare yang benar bukan soal produk termahal, melainkan urutan yang tepat dan konsistensi. Jika Anda ragu dengan kondisi kulit sendiri, konsultasi di klinik akan memangkas waktu pencobaan bertahun-tahun menjadi satu rencana yang jelas.",
+   845→        ],
+   846→      },
+   847→    ],
+   848→  },
+   849→  {
+   850→    slug: "sunscreen-investasi-kulit",
+   851→    title: "Sunscreen: Investasi Anti-Aging Paling Murah yang Sering Diabaikan",
+   852→    category: "Proteksi Kulit",
+   853→    excerpt:
+   854→      "80% penuaan kulit berasal dari paparan matahari. Inilah alasan mengapa sunscreen adalah produk paling penting di rak Anda.",
+   855→    date: "2025-01-28",
+   856→    readTime: "5 menit",
+   857→    cover: "/images/article-sunscreen.jpg",
+   858→    author: "Dr. Fatri Idana, M.Biomed., AAM",
+   859→    sections: [
+   860→      {
+   861→        heading: "Fakta yang Sering Mengagetkan Pasien",
+   862→        body: [
+   863→          "Dalam praktik sehari-hari, saya sering melihat pasien berinvestasi besar pada serum mahal dan treatment klinik, namun melewatkan sunscreen. Padahal radiasi UV adalah penyumbang 80–90% tanda penuaan terlihat: flek hitam, kerutan, kehilangan kenyal, hingga pembuluh darah pecah.",
+   864→          "UV ada di mana-mana — menembus awan, kaca jendela mobil, bahkan lampu ruangan tertentu. Di iklim tropis Indonesia dengan indeks UV tinggi sepanjang tahun, perlindungan harian bukan pilihan, melainkan kebutuhan.",
+   865→        ],
+   866→      },
+   867→      {
+   868→        heading: "Memilih Sunscreen yang Tepat",
+   869→        body: [
+   870→          "Untuk kulit berminyak: pilih formula oil-free dengan finish matte seperti Degera Sunscreen Free Oily. Untuk kulit kering: formula dengan pelembap seperti Degera Sunscreen Moist. Sunblock fisik (zinc oxide) lebih cocok untuk kulit sensitif.",
+   871→          "Yang penting bukan angka SPF semata, tetapi pemakaian yang cukup dan berulang. Dua jari penuh untuk wajah-leher, diulang setiap 3–4 jam saat beraktivitas di luar.",
+   872→        ],
+   873→      },
+   874→      {
+   875→        heading: "Sunscreen di Dalam Ruangan?",
+   876→        body: [
+   877→          "Ya, jika Anda dekat jendela atau bekerja di depan layar dalam durasi panjang. UVA menembus kaca. Kebiasaan sederhana: sunscreen pagi hari menjadi langkah terakhir yang tidak boleh dilewat, apa pun agenda Anda.",
+   878→        ],
+   879→      },
+   880→    ],
+   881→  },
+   882→  {
+   883→    slug: "mengenal-chemical-peeling",
+   884→    title: "Mengenal Chemical Peeling: Prosedur, Manfaat, dan Masa Pemulihan",
+   885→    category: "Treatment Klinik",
+   886→    excerpt:
+   887→      "Salah satu prosedur paling populer di klinik kecantikan — apa yang sebenarnya terjadi pada kulit Anda selama dan setelah peeling?",
+   888→    date: "2025-02-08",
+   889→    readTime: "7 menit",
+   890→    cover: "/images/article-peeling.jpg",
+   891→    author: "Dr. Fatri Idana, M.Biomed., AAM",
+   892→    sections: [
+   893→      {
+   894→        heading: "Apa Itu Chemical Peeling",
+   895→        body: [
+   896→          "Chemical peeling adalah prosedur mengangkat lapisan kulit mati menggunakan larutan asam terkontrol. Ketika lapisan lama terangkat, kulit merespons dengan memperbarui sel dan merangsang kolagen baru — inilah mengapa kulit tampak lebih cerah, halus, dan kencang setelahnya.",
+   897→          "Peeling berbagi level: light peeling (AHA ringan, tanpa downtime) untuk glow dan tekstur; medium peeling (TCA) untuk noda dan bekas jerawat; deep peeling jarang dilakukan dan hanya untuk kasus khusus.",
+   898→        ],
+   899→      },
+   900→      {
+   901→        heading: "Siapa yang Membutuhkan",
+   902→        body: [
+   903→          "Peeling efektif untuk: kulit kusam, tekstur kasar, bekas jerawat ringan-menengah, flek hitam, pori besar, dan garis halus awal. Pada DEGERASIA, protokol F-Peeling Pro dikalibrasi personal oleh dr. Fatri — level keasaman, jenis asam, dan durasi disesuaikan kondisi kulit Anda.",
+   904→          "Peeling juga dapat dikerjakan di luar wajah: leher, ketiak, dan lipatan paha untuk mencerahkan area yang sering tergesek.",
+   905→        ],
+   906→      },
+   907→      {
+   908→        heading: "Masa Pemulihan & Perawatan Pasca",
+   909→        body: [
+   910→          "Light peeling: hampir tanpa pengelupasan terlihat, bisa beraktivitas normal. Medium peeling: pengelupasan halus hari ke-2 hingga ke-5. Yang penting: jangan dicabut kulit yang mengelupas, hindari sinar matahari langsung, dan sunscreen wajib.",
+   911→          "Hindari bahan aktif keras (retinol, AHA/BHA lain) selama 5–7 hari pasca prosedur. Kami memberikan panduan tertulis lengkap setiap pasca treatment di klinik.",
+   912→        ],
+   913→      },
+   914→    ],
+   915→  },
+   916→  {
+   917→    slug: "botox-vs-filler",
+   918→    title: "Botox vs Filler: Mana yang Tepat untuk Kebutuhan Anda?",
+   919→    category: "Anti-Aging",
+   920→    excerpt:
+   921→      "Dua injeksi paling populer di dunia estetika sering tertukar. Kenali perbedaannya agar Anda tidak salah memilih treatment.",
+   922→    date: "2025-02-20",
+   923→    readTime: "6 menit",
+   924→    cover: "/images/article-botox.jpg",
+   925→    author: "Dr. Fatri Idana, M.Biomed., AAM",
+   926→    sections: [
+   927→      {
+   928→        heading: "Dua Bahan, Dua Tugas Berbeda",
+   929→        body: [
+   930→          "Botox (botulinum toxin) bekerja dengan merelaksasi otot. Tugasnya: menghaluskan garis ekspresi yang muncul saat otot bergerak — kerutan dahi, crow's feet di sudut mata, dan garis sekitar mulut.",
+   931→          "Filler (hyaluronic acid) bekerja dengan mengisi volume. Tugasnya: membentuk dan menambah — bibir fuller, dagu tegas, pipi proporsional, dan mengisi lekukan yang mengendors seiring usia.",
+   932→        ],
+   933→      },
+   934→      {
+   935→        heading: "Aturan Praktis Memilih",
+   936→        body: [
+   937→          "Jika keluhan Anda muncul 'saat berekspresi' (mengerutkan dahi, menyipit) — itu wilayah Botox. Jika keluhan muncul 'secara statis' (nasolabial fold terlihat saat wajah tenang, bibir tipis) — itu wilayah Filler.",
+   938→          "Banyak pasien justru membutuhkan kombinasi keduanya dalam dosis kecil untuk hasil menyeluruh yang natural. Di konsultasi DEGERASIA, kami memetakan kebutuhan Anda berdasarkan anatomi, bukan tren.",
+   939→        ],
+   940→      },
+   941→      {
+   942→        heading: "Soal Keamanan & Hasil Natural",
+   943→        body: [
+   944→          "Kedua prosedur aman jika dilakukan dokter berpengalaman dengan produk asli. Wajah 'bezu' atau bibir 'over' adalah hasil dosis dan teknik yang keliru — bukan sifat bahan aslinya. Prinsip kami: orang lain melihat Anda segar, bukan melihat 'sesuatu yang baru Anda lakukan'.",
+   945→        ],
+   946→      },
+   947→    ],
+   948→  },
+   949→  {
+   950→    slug: "rahasia-night-cream",
+   951→    title: "Rahasia Night Cream: Mengapa Perawatan Malam Menentukan Kulit Anda",
+   952→    category: "Edukasi Skincare",
+   953→    excerpt:
+   954→      "Regenerasi kulit mencapai puncaknya saat Anda tidur. Beginilah cara memaksimalkan 'jam emas' perbaikan kulit malam hari.",
+   955→    date: "2025-03-02",
+   956→    readTime: "5 menit",
+   957→    cover: "/images/article-night.jpg",
+   958→    author: "Dr. Fatri Idana, M.Biomed., AAM",
+   959→    sections: [
+   960→      {
+   961→        heading: "Jam Emas Regenerasi",
+   962→        body: [
+   963→          "Antara jam 22.00 hingga 02.00, laju regenerasi sel kulit berada di titik tertinggi — hampir dua kali lipat dibanding siang hari. Aliran darah ke kulit meningkat, permeabilitas membaik, dan produksi kolagen berjalan penuh. Inilah mengapa produk yang tepat di malam hari bekerja jauh lebih efektif.",
+   964→        ],
+   965→      },
+   966→      {
+   967→        heading: "Bahan Aktif Andalan Malam",
+   968→        body: [
+   969→          "Retinoid merangsang pergantian sel dan kolagen — bintang anti-aging yang paling terbukti secara ilmiah. Peptida membangun blok penyusun kulit. Niacinamide mencerahkan dan menenangkan. Ketiganya ada dalam rangkaian malam DEGERA: Night Cream dan Night Lotion Premium dirancang bekerja sinergis dengan jam emas ini.",
+   970→        ],
+   971→      },
+   972→      {
+   973→        heading: "Kebiasaan Malam yang Melengkapi",
+   974→        body: [
+   975→          "Tidur cukup 7–8 jam pada sarapan bantal yang bersih, posisi tidur terlentang mengurangi garis tidur, dan ruangan yang sejuk membantu kualitas tidur mendalam. Skincare terbaik pun kalah oleh kurang tidur kronis — istirahat adalah bagian dari resep kecantikan.",
+   976→        ],
+   977→      },
+   978→    ],
+   979→  },
+   980→  {
+   981→    slug: "jerawat-dewasa",
+   982→    title: "Jerawat di Usia Dewasa: Penyebab yang Sering Terlewat & Solusi Klinisnya",
+   983→    category: "Acne Care",
+   984→    excerpt:
+   985→      "Jerawat di usia 25–40 tahun punya pemicu berbeda dari masa remaja. Kenali akar masalahnya sebelum membeli produk berikutnya.",
+   986→    date: "2025-03-15",
+   987→    readTime: "7 menit",
+   988→    cover: "/images/article-acne.jpg",
+   989→    author: "Dr. Fatri Idana, M.Biomed., AAM",
+   990→    sections: [
+   991→      {
+   992→        heading: "Kenapa Masih Berjerawat di Usia Dewasa?",
+   993→        body: [
+   994→          "Jerawat dewasa umumnya bersifat hormonal dan inflamasi dalam. Pemicunya: fluktuasi hormon (siklus haid, stres, PCOS), pola tidur buruk, diet tinggi glikemik, dan — jebakan terbesar — penggunaan produk yang terlalu keras sehingga merusak barrier dan memicu jerawat balik.",
+   995→          "Lokasinya juga khas: di rahang bawah dan dagu (pola hormonal), serta pipi. Berbeda dari jerawat remaja yang lebih menyebar di zona-T.",
+   996→        ],
+   997→      },
+   998→      {
+   999→        heading: "Pendekatan Medis yang Berlapis",
+  1000→        body: [
+  1001→          "Di DEGERASIA, program Acne Solution kami berlapis: tindakan klinik (ekstraksi medis, peeling anti-jerawat), pengaturan homecare (Degera Acne Wash, Toner Acne, Milk Cleanser Acne), dan koreksi faktor pemicu — mulai dari stres hingga sarisipan kosmetik yang Anda pakai.",
+  1002→          "Kunci keberhasilan: kesabaran dan konsistensi. Perbaikan signifikan membutuhkan 6–12 minggu, bukan 6–12 hari. Kami memandu Anda tiap langkah dengan evaluasi berkala.",
+  1003→        ],
+  1004→      },
+  1005→      {
+  1006→        heading: "Yang Harus Dihindari",
+  1007→        body: [
+  1008→          "Mencoba terlalu banyak produk sekaligus, mencuci wajah berlebihan (>3x/hari), menekan jerawat dengan tangan, dan memakai produk 'resep' tanpa penilaian dokter. Semua memperparah peradangan dan mempercepat pembentukan bekas.",
+  1009→        ],
+  1010→      },
+  1011→    ],
+  1012→  },
+  1013→];
+  1014→
+  1015→/* ── Testimoni ─────────────────────────────────────────────── */
+  1016→
+  1017→export const TESTIMONIALS: Testimonial[] = [
+  1018→  {
+  1019→    name: "Siti Rahmadewi",
+  1020→    city: "Sumbawa",
+  1021→    treatment: "F-Silk Glow",
+  1022→    quote:
+  1023→      "Pertama kali facial di Degerasia langsung jatuh cinta. Kulit terasa beda sejak keluar ruang treatment — halus, cerah, dan caranya dr. Fatri menjelaskan sangat meyakinkan.",
+  1024→  },
+  1025→  {
+  1026→    name: "Andini Pratama",
+  1027→    city: "Bima",
+  1028→    treatment: "Program Acne Solution",
+  1029→    quote:
+  1030→      "Tiga tahun berjuang dengan jerawat, baru di Degerasia kulit saya benar-benar tenang. Produk Degera Acne Wash-nya juara, dan evaluasi rutinnya bikin saya disiplin.",
+  1031→  },
+  1032→  {
+  1033→    name: "Maria Lestari",
+  1034→    city: "Mataram",
+  1035→    treatment: "Botox & Filler",
+  1036→    quote:
+  1037→      "Hasilnya natural banget! Teman-teman bilang saya tampak segar, bukan tampak 'sesuatu'. dr. Fatri sangat hati-hati dengan dosis — ini yang bikin saya kembali lagi.",
+  1038→  },
+  1039→  {
+  1040→    name: "Rizka Amelia",
+  1041→    city: "Sumbawa Besar",
+  1042→    treatment: "Brightening Program",
+  1043→    quote:
+  1044→      "Flek hitam yang membandel bertahun-tahun perlahan memudar dalam 2 bulan program. Tidak ada miracle instan, tapi hasil yang benar-benar bertahan.",
+  1045→  },
+  1046→  {
+  1047→    name: "Dewi Anggraini",
+  1048→    city: "Dompu",
+  1049→    treatment: "HIFU Ultra Lifting",
+  1050→    quote:
+  1051→      "Sekali sesi langsung terasa wajah lebih tegas. Yang paling saya suka: tidak ada downtime sama sekali, langsung kerja seperti biasa.",
+  1052→  },
+  1053→  {
+  1054→    name: "Fathimah Zahra",
+  1055→    city: "Sumbawa",
+  1056→    treatment: "Degera Night Cream",
+  1057→    quote:
+  1058→      "Mulai dari beli night cream, sekarang seluruh rangkaian saya DEGERA. Harga sangat masuk akal tapi kualitasnya setara produk luar yang lebih mahal.",
+  1059→  },
+  1060→  {
+  1061→    name: "Nurul Hidayah",
+  1062→    city: "Alas",
+  1063→    treatment: "F-Plasma Rejuv",
+  1064→    quote:
+  1065→      "Sempat ragu dengan PRP, ternyata prosedurnya jauh lebih nyaman dari bayangan. Tiga bulan kemudian bekas jerawat saya memudar signifikan.",
+  1066→  },
+  1067→  {
+  1068→    name: "Kartika Sari",
+  1069→    city: "Sape",
+  1070→    treatment: "Signature Facial",
+  1071→    quote:
+  1072→      "Clinic-nya mewah, bersih, dan stafnya ramah semua. Dari Sape ke Sumbawa memang agak jauh, tapi untuk hasil ini sangat sepadan.",
+  1073→  },
+  1074→];
+  1075→
+  1076→/* ── Promo & Program ───────────────────────────────────────── */
+  1077→
+  1078→export const PROMOS: Promo[] = [
+  1079→  {
+  1080→    title: "Konsultasi Kulit Gratis",
+  1081→    subtitle: "Untuk Pasien Baru",
+  1082→    description:
+  1083→      "Analisis kulit langsung bersama dr. Fatri Idana — gratis tanpa syarat untuk kunjungan pertama Anda. Termasuk rekomendasi treatment dan homecare yang dipersonalisasi.",
+  1084→    valid: "Berlaku setiap hari operasional",
+  1085→    slug: "konsultasi-gratis",
+  1086→    icon: "sparkles",
+  1087→  },
+  1088→  {
+  1089→    title: "Paket Glow 3+1",
+  1090→    subtitle: "F-Silk Glow Series",
+  1091→    description:
+  1092→      "Ikuti 3 sesi F-Silk Glow dan dapatkan 1 sesi gratis. Program pencerahan berkelanjutan untuk hasil glowing yang maksimal dan bertahan lama.",
+  1093→    valid: "Pendaftaran hingga akhir bulan ini",
+  1094→    slug: "paket-glow",
+  1095→    icon: "gem",
+  1096→  },
+  1097→  {
+  1098→    title: "Bundle DEGERA Starter",
+  1099→    subtitle: "Rangkaian Homecare",
+  1100→    description:
+  1101→      "Dapatkan diskon spesial untuk pembelian bundle: Cleanser + Toner + Serum Gold + Night Cream. Perawatan lengkap satu bulan dengan harga terbaik.",
+  1102→    valid: "Stok terbatas setiap bulan",
+  1103→    slug: "bundle-starter",
+  1104→    icon: "package",
+  1105→  },
+  1106→  {
+  1107→    title: "Program Referral Degerasia",
+  1108→    subtitle: "Ajak Sahabat, Dapat Benefit",
+  1109→    description:
+  1110→      "Rekomendasikan sahabat Anda untuk treatment pertama — ia mendapat konsultasi gratis dan Anda menerima voucher treatment senilai Rp 100.000.",
+  1111→    valid: "Program berjalan sepanjang tahun",
+  1112→    slug: "referral",
+  1113→    icon: "heart",
+  1114→  },
+  1115→];
+  1116→
+  1117→/* ── FAQ ───────────────────────────────────────────────────── */
+  1118→
+  1119→export const FAQS: Faq[] = [
+  1120→  {
+  1121→    q: "Apakah saya perlu membuat janji sebelum datang?",
+  1122→    a: "Sangat disarankan. Reservasi melalui WhatsApp 0822-3600-0715 memastikan dr. Fatri menyiapkan waktu penuh untuk konsultasi Anda tanpa menunggu.",
+  1123→  },
+  1124→  {
+  1125→    q: "Bagaimana cara reservasi treatment?",
+  1126→    a: "Klik tombol Reservasi di situs ini, hubungi WhatsApp kami, atau datang langsung ke klinik di Jl. Sultan Kaharuddin, Dusun Sering, Sumbawa (di depan Masjid Sering / perempatan Sering).",
+  1127→  },
+  1128→  {
+  1129→    q: "Apakah konsultasi pertama dikenakan biaya?",
+  1130→    a: "Tidak. Konsultasi kulit untuk pasien baru adalah gratis — termasuk analisis kulit dan rekomendasi treatment yang dipersonalisasi.",
+  1131→  },
+  1132→  {
+  1133→    q: "Apakah semua treatment dilakukan langsung oleh dr. Fatri?",
+  1134→    a: "Ya. dr. Fatri Idana, M.Biomed., AAM sebagai Senior Dokter Kecantikan dan Founder Klinik, secara pribadi menangani setiap pasien — dari konsultasi hingga tindakan.",
+  1135→  },
+  1136→  {
+  1137→    q: "Apakah produk DEGERA aman?",
+  1138→    a: "Seluruh produk DEGERA terdaftar resmi di BPOM (dapat dicek melalui aplikasi cek BPOM dengan nomor registrasi di setiap halaman produk kami).",
+  1139→  },
+  1140→  {
+  1141→    q: "Apakah treatment menyakitkan?",
+  1142→    a: "Kami menerapkan standar kenyamanan maksimal: krim biang untuk injeksi, teknik lembut, dan penjelasan setiap langkah. Mayoritas pasien merasa jauh lebih nyaman dari yang dibayangkan.",
+  1143→  },
+  1144→  {
+  1145→    q: "Berapa lama hasil treatment terlihat?",
+  1146→    a: "Berbeda per treatment: facial memberi efek segera; peeling 5–7 hari; injeksi 3–14 hari; program jerawat/pencerahan 6–12 minggu. dr. Fatri menjelaskan estimasi realistis di setiap konsultasi.",
+  1147→  },
+  1148→  {
+  1149→    q: "Metode pembayaran apa yang diterima?",
+  1150→    a: "Tunai, transfer bank, dan QRIS untuk semua treatment dan produk DEGERA.",
+  1151→  },
+  1152→  {
+  1153→    q: "Apakah klinik melayani pasien dari luar kota?",
+  1154→    a: "Ya. Kami rutin melayani pasien dari Bima, Dompu, Mataram, dan Lombok. Tim kami membantu merencanakan jadwal treatment efisien untuk kunjungan Anda.",
+  1155→  },
+  1156→  {
+  1157→    q: "Apakah ada program perawatan berkelanjutan?",
+  1158→    a: "Ada. Setelah konsultasi awal, dr. Fatri menyusun peta perawatan personal (roadmap kulit) — kombinasi treatment klinik berkala dan homecare DEGERA untuk hasil jangka panjang.",
+  1159→  },
+  1160→];
+  1161→
+  1162→/* ── Galeri ────────────────────────────────────────────────── */
+  1163→
+  1164→export const GALLERY: GalleryItem[] = [
+  1165→  { src: "/images/clinic-interior.png", caption: "Lobi Klinik Degerasia", tag: "Fasilitas" },
+  1166→  { src: "/images/gallery-treatment-room.png", caption: "Ruang Treatment Premium", tag: "Fasilitas" },
+  1167→  { src: "/images/treatment-moment.png", caption: "Momensi Perawatan Bersama dr. Fatri", tag: "Treatment" },
+  1168→  { src: "/images/tim-degerasia.jpg", caption: "Tim Besar Keluarga Degerasia", tag: "Tim" },
+  1169→  { src: "/images/gallery-facial-suite.png", caption: "Facial Suite dengan Sentuhan Botani", tag: "Fasilitas" },
+  1170→  { src: "/images/doctor-about.png", caption: "dr. Fatri Idana, M.Biomed., AAM", tag: "Dokter" },
+  1171→  { src: "/images/gallery-product-bar.png", caption: "Koleksi Produk DEGERA Resmi BPOM", tag: "Produk" },
+  1172→  { src: "/images/tumbler-degera.jpg", caption: "Merchandise Eksklusif Degerasia", tag: "Gaya Hidup" },
+  1173→];
+  1174→
+  1175→/* ── Statistik Klinik ──────────────────────────────────────── */
+  1176→
+  1177→export const CLINIC_STATS = [
+  1178→  { value: 21, suffix: "+", label: "Produk DEGERA Terdaftar BPOM" },
+  1179→  { value: 13, suffix: "+", label: "Treatment Klinik Premium" },
+  1180→  { value: 3, suffix: " Tahun", label: "Riset & Pengembangan Produk" },
+  1181→  { value: 100, suffix: "%", label: "Ditangani Langsung dr. Fatri" },
+  1182→];
+  1183→
+  1184→/* ── Timeline Perjalanan Klinik ────────────────────────────── */
+  1185→
+  1186→export const JOURNEY = [
+  1187→  {
+  1188→    year: "Fondasi",
+  1189→    title: "Pendidikan Kedokteran & Magister Biomedis",
+  1190→    detail:
+  1191→      "Dr. Fatri Idana menyelesaikan pendidikan kedokteran dan melanjutkan studi Magister Biomedis (M.Biomed) — pondasi ilmiah yang menjadi DNA setiap treatment dan produk Degerasia.",
+  1192→  },
+  1193→  {
+  1194→    year: "Sertifikasi",
+  1195→    title: "Ahli Anti-Aging Medicine (AAM)",
+  1196→    detail:
+  1197→      "Sertifikasi AAM memperkuat spesialisasi dr. Fatri dalam kedokteran anti-aging: memahami penuaan dari akar biologi, bukan sekadar meredam gejala di permukaan.",
+  1198→  },
+  1199→  {
+  1200→    year: "2022",
+  1201→    title: "Lahirnya DEGERA — 7 Produk Pertama Terdaftar BPOM",
+  1202→    detail:
+  1203→      "Merek DEGERA resmi terdaftar dan tujuh produk pertama mendapat izin edar BPOM: BB Cream, J'Ra Cream, Sunscreen, hingga Serum Gold. Riset botani tropis Indonesia menjadi jantung formulanya.",
+  1204→  },
+  1205→  {
+  1206→    year: "2023",
+  1207→    title: "Ekspansi Lini Acne & Klinik Degerasia",
+  1208→    detail:
+  1209→      "Lini khusus kulit berjerawat (Acne Wash, Toner Acne) melengkapi katalog, seiring lahirnya Klinik Degerasia di Sumbawa sebagai pusat perawatan estetika premium NTB.",
+  1210→  },
+  1211→  {
+  1212→    year: "2024",
+  1213→    title: "9 Produk Baru — Lini Premium & Body Care",
+  1214→    detail:
+  1215→      "Night Lotion Premium, Facial Foam, Body Whitening Premium, dan 6 inovasi lain memperluas DEGERA menjadi ekosistem perawatan lengkap dari kepala hingga kaki.",
+  1216→  },
+  1217→  {
+  1218→    year: "2025",
+  1219→    title: "JRA Serum & Sunscreen Moist — Generasi Terbaru",
+  1220→    detail:
+  1221→      "21 produk terdaftar BPOM. DEGERA kini dipercaya ribuan pelanggan dan menjadi homecare resmi yang direkomendasikan di setiap program treatment Degerasia.",
+  1222→  },
+  1223→];
+  1224→
+  1225→/* ── Utilitas ──────────────────────────────────────────────── */
+  1226→
+  1227→export function getService(slug: string): Service | undefined {
+  1228→  return SERVICES.find((s) => s.slug === slug);
+  1229→}
+  1230→
+  1231→export function getProduct(slug: string): Product | undefined {
+  1232→  return PRODUCTS.find((p) => p.slug === slug);
+  1233→}
+  1234→
+  1235→export function getArticle(slug: string): Article | undefined {
+  1236→  return ARTICLES.find((a) => a.slug === slug);
+  1237→}
+  1238→
+  1239→export function formatPrice(price: number): string {
+  1240→  return `Rp ${price.toLocaleString("id-ID")}`;
+  1241→}
+  1242→
+  1243→export function formatDate(iso: string): string {
+  1244→  const months = [
+  1245→    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+  1246→    "Juli", "Agustus", "September", "Oktober", "November", "Desember",
+  1247→  ];
+  1248→  const d = new Date(iso);
+  1249→  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  1250→}
+  1251→
