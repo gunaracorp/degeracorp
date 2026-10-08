@@ -44,17 +44,16 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* ── DEGERASIA luxury palette ─────────────────────────── */
-  --color-ivory: #fbf7f0;
-  --color-cream: #f4ecdf;
-  --color-sand: #e8dac3;
-  --color-champagne: #d9c39a;
-  --color-gold: #b98a4a;
-  --color-gold-deep: #96703a;
-  --color-espresso: #241b12;
-  --color-cocoa: #57432e;
-  --color-blush: #e6cdb6;
-  --color-rosewood: #8a5a48;
+  /* ── Palet resmi DEGERASIA (dari logo: hijau botanical) ── */
+  --color-porcelain: #fafcf8;   /* latar utama putih hijau lembut */
+  --color-sage: #eff6e9;        /* permukaan sage */
+  --color-fern: #dcebd0;        /* garis & border dedaunan */
+  --color-mint: #7bc96f;        /* aksen hijau muda (logo) */
+  --color-leaf: #2f9e44;        /* hijau utama logo degerasia */
+  --color-leaf-deep: #1e7a34;   /* hijau tua untuk teks aksen */
+  --color-forest: #10271a;      /* hijau hutan pekat (dark section) */
+  --color-moss: #4c6b52;        /* teks sekunder kehijauan */
+  --color-blush: #cde8c2;       /* pucuk daun muda */
 
   /* ── motion ────────────────────────────────────────────── */
   --animate-marquee: marquee 32s linear infinite;
@@ -83,37 +82,37 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #fbf7f0;
-  --foreground: #241b12;
-  --card: #fffdf9;
-  --card-foreground: #241b12;
-  --popover: #fffdf9;
-  --popover-foreground: #241b12;
-  --primary: #96703a;
-  --primary-foreground: #fbf7f0;
-  --secondary: #f4ecdf;
-  --secondary-foreground: #241b12;
-  --muted: #f0e7d7;
-  --muted-foreground: #7a6a54;
-  --accent: #f4ecdf;
-  --accent-foreground: #241b12;
+  --background: #fafcf8;
+  --foreground: #10271a;
+  --card: #fdfffc;
+  --card-foreground: #10271a;
+  --popover: #fdfffc;
+  --popover-foreground: #10271a;
+  --primary: #1e7a34;
+  --primary-foreground: #f7fbf3;
+  --secondary: #eff6e9;
+  --secondary-foreground: #10271a;
+  --muted: #eaf3e1;
+  --muted-foreground: #55705c;
+  --accent: #e8f3df;
+  --accent-foreground: #10271a;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e5d9c4;
-  --input: #e5d9c4;
-  --ring: #b98a4a;
-  --chart-1: #b98a4a;
-  --chart-2: #8a5a48;
-  --chart-3: #57432e;
-  --chart-4: #d9c39a;
-  --chart-5: #96703a;
-  --sidebar: #fbf7f0;
-  --sidebar-foreground: #241b12;
-  --sidebar-primary: #96703a;
-  --sidebar-primary-foreground: #fbf7f0;
-  --sidebar-accent: #f4ecdf;
-  --sidebar-accent-foreground: #241b12;
-  --sidebar-border: #e5d9c4;
-  --sidebar-ring: #b98a4a;
+  --border: #dcebd0;
+  --input: #dcebd0;
+  --ring: #2f9e44;
+  --chart-1: #2f9e44;
+  --chart-2: #1e7a34;
+  --chart-3: #7bc96f;
+  --chart-4: #10271a;
+  --chart-5: #4c6b52;
+  --sidebar: #fafcf8;
+  --sidebar-foreground: #10271a;
+  --sidebar-primary: #1e7a34;
+  --sidebar-primary-foreground: #f7fbf3;
+  --sidebar-accent: #eff6e9;
+  --sidebar-accent-foreground: #10271a;
+  --sidebar-border: #dcebd0;
+  --sidebar-ring: #2f9e44;
 }
 
 @layer base {
@@ -129,13 +128,13 @@
     font-family: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   }
   ::selection {
-    background: #b98a4a;
-    color: #fbf7f0;
+    background: #2f9e44;
+    color: #fafcf8;
   }
 }
 
 @layer utilities {
-  /* Fine gold-scrollbar */
+  /* Fine green scrollbar */
   .lux-scrollbar::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -144,7 +143,7 @@
     background: transparent;
   }
   .lux-scrollbar::-webkit-scrollbar-thumb {
-    background: linear-gradient(#d9c39a, #b98a4a);
+    background: linear-gradient(#7bc96f, #2f9e44);
     border-radius: 999px;
   }
 
@@ -158,9 +157,9 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* Teks gradasi emas */
-  .text-gold-gradient {
-    background: linear-gradient(105deg, #8a6a34 0%, #c9a96a 35%, #8a6a34 60%, #c9a96a 100%);
+  /* Teks gradasi hijau daun */
+  .text-leaf-gradient {
+    background: linear-gradient(105deg, #1e7a34 0%, #58b368 35%, #1e7a34 60%, #58b368 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -168,9 +167,9 @@
     animation: var(--animate-shimmer);
   }
 
-  /* Garis emas halus */
-  .gold-hairline {
-    background: linear-gradient(90deg, transparent, #c9a96a, transparent);
+  /* Garis daun halus */
+  .brand-hairline {
+    background: linear-gradient(90deg, transparent, #58b368, transparent);
   }
 
   /* Bingkai lengkung ala galeri */

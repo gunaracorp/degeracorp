@@ -32,10 +32,10 @@ export function Eyebrow({ children, tone = "dark" }: { children: ReactNode; tone
   return (
     <span
       className={`inline-flex items-center gap-3 text-[11px] md:text-xs font-medium uppercase tracking-[0.35em] ${
-        tone === "dark" ? "text-gold-deep" : "text-champagne"
+        tone === "dark" ? "text-leaf-deep" : "text-mint"
       }`}
     >
-      <span aria-hidden className={`h-px w-8 ${tone === "dark" ? "bg-gold" : "bg-champagne"}`} />
+      <span aria-hidden className={`h-px w-8 ${tone === "dark" ? "bg-leaf" : "bg-mint"}`} />
       {children}
     </span>
   );

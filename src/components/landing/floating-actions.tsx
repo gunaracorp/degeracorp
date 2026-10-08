@@ -22,7 +22,7 @@ export function FloatingActions() {
             exit={{ opacity: 0, scale: 0.6, y: 10 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Kembali ke atas"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-ivory/90 text-espresso shadow-lg backdrop-blur transition-colors hover:bg-espresso hover:text-champagne"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-leaf/30 bg-porcelain/90 text-forest shadow-lg backdrop-blur transition-colors hover:bg-forest hover:text-mint"
           >
             <ArrowUp className="h-4 w-4" aria-hidden />
           </motion.button>
@@ -39,9 +39,9 @@ export function FloatingActions() {
         transition={{ delay: 1.6, type: "spring", stiffness: 260, damping: 18 }}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.94 }}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-gold-deep to-gold text-ivory shadow-[0_15px_35px_-10px_rgba(150,112,58,0.7)]"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-leaf-deep to-leaf text-porcelain shadow-[0_15px_35px_-10px_rgba(30,122,52,0.7)]"
       >
-        <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-gold/40 [animation-duration:2.4s]" />
+        <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-leaf/40 [animation-duration:2.4s]" />
         <MessageCircle className="relative h-6 w-6" aria-hidden />
       </motion.a>
     </div>

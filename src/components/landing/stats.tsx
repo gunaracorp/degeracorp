@@ -42,22 +42,22 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export function Stats() {
   return (
-    <section aria-label="Pencapaian dalam angka" className="relative overflow-hidden bg-espresso py-16 md:py-20">
+    <section aria-label="Pencapaian dalam angka" className="relative overflow-hidden bg-forest py-16 md:py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 grain" />
-      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(185,138,74,0.25),transparent_65%)] blur-2xl" />
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(47,158,68,0.25),transparent_65%)] blur-2xl" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-28 -left-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(217,195,154,0.16),transparent_65%)] blur-2xl"
+        className="pointer-events-none absolute -bottom-28 -left-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(163,217,119,0.16),transparent_65%)] blur-2xl"
       />
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-12 px-5 md:grid-cols-4 md:px-8">
         {STATS.map((s) => (
           <div key={s.label} className="text-center">
-            <p className="font-display text-5xl font-light text-champagne md:text-6xl">
+            <p className="font-display text-5xl font-light text-mint md:text-6xl">
               <Counter value={s.value} suffix={s.suffix} />
             </p>
-            <div aria-hidden className="mx-auto mt-4 h-px w-12 gold-hairline" />
-            <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.28em] text-ivory/70 md:text-xs">
+            <div aria-hidden className="mx-auto mt-4 h-px w-12 brand-hairline" />
+            <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.28em] text-porcelain/70 md:text-xs">
               {s.label}
             </p>
           </div>

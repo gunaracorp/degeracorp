@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, Sparkles, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -37,7 +38,7 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-500",
           scrolled
-            ? "border-b border-gold/15 bg-ivory/85 shadow-[0_10px_40px_-18px_rgba(36,27,18,0.35)] backdrop-blur-xl"
+            ? "border-b border-leaf/15 bg-porcelain/85 shadow-[0_10px_40px_-18px_rgba(15,36,21,0.35)] backdrop-blur-xl"
             : "bg-transparent"
         )}
       >
@@ -45,16 +46,20 @@ export function Navbar() {
           aria-label="Navigasi utama"
           className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8"
         >
-          {/* Brand */}
+          {/* Brand — logo resmi DEGERASIA */}
           <a href="#beranda" className="group flex items-center gap-3" aria-label="Kembali ke beranda">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 bg-espresso text-sm font-logo text-champagne transition-transform duration-500 group-hover:rotate-[360deg] md:h-10 md:w-10">
-              FI
+            <span className="flex items-center rounded-xl bg-porcelain/90 px-2.5 py-1.5 shadow-sm ring-1 ring-fern transition-shadow duration-500 group-hover:shadow-md">
+              <Image
+                src="/images/logo-degerasia.png"
+                alt="Logo DEGERASIA — Skincare & Anti-Aging"
+                width={72}
+                height={39}
+                priority
+                className="h-8 w-auto md:h-9"
+              />
             </span>
-            <span className="leading-none">
-              <span className="block font-logo text-lg tracking-[0.22em] text-espresso md:text-xl">
-                DEGERASIA
-              </span>
-              <span className="mt-1 block text-[9px] uppercase tracking-[0.4em] text-gold-deep md:text-[10px]">
+            <span className="hidden leading-none sm:block">
+              <span className="mt-0.5 block text-[9px] uppercase tracking-[0.34em] text-leaf-deep md:text-[10px]">
                 by Dr. Fatri Idana
               </span>
             </span>
@@ -66,10 +71,10 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="group relative text-[13px] font-medium uppercase tracking-[0.18em] text-cocoa transition-colors hover:text-espresso"
+                  className="group relative text-[13px] font-medium uppercase tracking-[0.18em] text-moss transition-colors hover:text-forest"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-leaf transition-all duration-500 group-hover:w-full" />
                 </a>
               </li>
             ))}
@@ -78,9 +83,9 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <a
               href="#kontak"
-              className="group relative hidden overflow-hidden rounded-full bg-espresso px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors duration-500 md:inline-flex"
+              className="group relative hidden overflow-hidden rounded-full bg-forest px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.2em] text-porcelain transition-colors duration-500 md:inline-flex"
             >
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-gold-deep via-gold to-gold-deep transition-transform duration-500 group-hover:translate-x-0" />
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-leaf-deep via-leaf to-leaf-deep transition-transform duration-500 group-hover:translate-x-0" />
               <span className="relative flex items-center gap-2">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden />
                 Reservasi
@@ -92,7 +97,7 @@ export function Navbar() {
               type="button"
               onClick={() => setOpen(true)}
               aria-label="Buka menu navigasi"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-ivory/70 text-espresso backdrop-blur lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-leaf/30 bg-porcelain/70 text-forest backdrop-blur lg:hidden"
             >
               <Menu className="h-5 w-5" aria-hidden />
             </button>
@@ -108,18 +113,26 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-espresso text-ivory"
+            className="fixed inset-0 z-[60] flex flex-col bg-forest text-porcelain"
             role="dialog"
             aria-modal="true"
             aria-label="Menu navigasi"
           >
             <div className="flex h-16 items-center justify-between px-5 md:h-20 md:px-8">
-              <span className="font-logo text-lg tracking-[0.22em] text-champagne">DEGERASIA</span>
+              <span className="flex items-center rounded-xl bg-porcelain px-2.5 py-1.5">
+                <Image
+                  src="/images/logo-degerasia.png"
+                  alt="Logo DEGERASIA"
+                  width={64}
+                  height={34}
+                  className="h-7 w-auto"
+                />
+              </span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Tutup menu navigasi"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-champagne/30"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-mint/30"
               >
                 <X className="h-5 w-5" aria-hidden />
               </button>
@@ -135,7 +148,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block py-2 font-display text-4xl font-light italic text-ivory transition-colors hover:text-champagne"
+                    className="block py-2 font-display text-4xl font-light italic text-porcelain transition-colors hover:text-mint"
                   >
                     {link.label}
                   </a>
@@ -150,15 +163,15 @@ export function Navbar() {
                 <a
                   href="#kontak"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-gold-deep to-gold px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.25em] text-ivory"
+                  className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-leaf-deep to-leaf px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.25em] text-porcelain"
                 >
                   <Sparkles className="h-4 w-4" aria-hidden />
                   Buat Reservasi
                 </a>
               </motion.li>
             </ul>
-            <p className="px-8 pb-10 text-[11px] uppercase tracking-[0.3em] text-ivory/40">
-              Klinik Degerasia — The Art of Refined Beauty
+            <p className="px-8 pb-10 text-[11px] uppercase tracking-[0.3em] text-porcelain/40">
+              Klinik Degerasia — Sumbawa, Nusa Tenggara Barat
             </p>
           </motion.div>
         )}
