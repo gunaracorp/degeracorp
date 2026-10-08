@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Clock, Instagram, Loader2, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+import { Clock, Facebook, Loader2, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import { Eyebrow, Reveal } from "./reveal";
 import { useToast } from "@/hooks/use-toast";
 
@@ -20,7 +20,12 @@ const INFO = [
   {
     icon: MapPin,
     title: "Alamat Klinik",
-    lines: ["Jl. Kemang Raya No. 88", "Jakarta Selatan, 12730"],
+    lines: [
+      "Jl. Sultan Kaharuddin, Dusun Sering",
+      "Desa Kerato, Kec. Unter Iwes",
+      "Kab. Sumbawa, NTB 84316",
+      "Di depan Masjid Sering / Perempatan Sering",
+    ],
   },
   {
     icon: Clock,
@@ -30,12 +35,12 @@ const INFO = [
   {
     icon: Phone,
     title: "Telepon / WhatsApp",
-    lines: ["+62 812-3456-7890", "(021) 719-8866"],
+    lines: ["+62 822-3600-0715", "Chat untuk reservasi cepat"],
   },
   {
-    icon: Instagram,
-    title: "Instagram",
-    lines: ["@dr.fatriidana", "@klinikdegerasia"],
+    icon: Facebook,
+    title: "Facebook",
+    lines: ["Klinik Degerasia", "facebook.com/klinik.gerasia"],
   },
 ];
 

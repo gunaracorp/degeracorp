@@ -1,6 +1,7 @@
 "use client";
 
-import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
+import Image from "next/image";
+import { Facebook, MapPin, MessageCircle } from "lucide-react";
 
 const QUICK_LINKS = [
   { href: "#tentang", label: "Tentang Dr. Fatri" },
@@ -11,10 +12,21 @@ const QUICK_LINKS = [
 ];
 
 const SOCIALS = [
-  { icon: Instagram, label: "Instagram Dr. Fatri Idana", href: "https://instagram.com" },
-  { icon: MessageCircle, label: "WhatsApp Klinik Degerasia", href: "https://wa.me/6281234567890" },
-  { icon: Facebook, label: "Facebook Klinik Degerasia", href: "https://facebook.com" },
-  { icon: Youtube, label: "YouTube Klinik Degerasia", href: "https://youtube.com" },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp Klinik Degerasia",
+    href: "https://wa.me/6282236000715",
+  },
+  {
+    icon: Facebook,
+    label: "Facebook Klinik Degerasia",
+    href: "https://web.facebook.com/klinik.gerasia",
+  },
+  {
+    icon: MapPin,
+    label: "Lokasi Klinik di Google Maps",
+    href: "https://www.google.com/maps/search/?api=1&query=Klinik+Degerasia+Jl.+Sultan+Kaharuddin+Dusun+Sering+Desa+Kerato+Unter+Iwes+Kabupaten+Sumbawa+NTB",
+  },
 ];
 
 export function Footer() {
@@ -26,8 +38,14 @@ export function Footer() {
         {/* Brand */}
         <div>
           <a href="#beranda" className="flex items-center gap-3" aria-label="Kembali ke beranda">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-mint/40 font-logo text-sm text-mint">
-              FI
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-porcelain p-1.5 shadow-md">
+              <Image
+                src="/images/logo-degerasia.png"
+                alt="Logo DEGERASIA — Skincare & Anti-Aging"
+                width={40}
+                height={22}
+                className="h-7 w-auto"
+              />
             </span>
             <span>
               <span className="block font-logo text-xl tracking-[0.22em]">DEGERASIA</span>
@@ -96,9 +114,11 @@ export function Footer() {
             </li>
           </ul>
           <p className="mt-7 rounded-2xl border border-porcelain/10 bg-porcelain/5 p-4 text-[13px] font-light leading-relaxed text-porcelain/60">
-            Jl. Kemang Raya No. 88, Jakarta Selatan
+            Jl. Sultan Kaharuddin, Dusun Sering, Desa Kerato,
+            Kec. Unter Iwes, Kab. Sumbawa, NTB 84316 — di depan
+            Masjid Sering / Perempatan Sering.
             <br />
-            <span className="text-mint">+62 812-3456-7890</span>
+            <span className="text-mint">+62 822-3600-0715</span>
           </p>
         </div>
       </div>

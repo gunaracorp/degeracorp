@@ -41,7 +41,7 @@ export function About() {
           <Reveal>
             <div className="relative overflow-hidden rounded-[28px] shadow-[0_40px_70px_-30px_rgba(15,36,21,0.5)]">
               <Image
-                src="/images/about-doctor.png"
+                src="/images/doctor-about.png"
                 alt="Dr. Fatri Idana dalam suasana praktik di Klinik Degerasia"
                 width={864}
                 height={1152}
@@ -59,10 +59,10 @@ export function About() {
             className="absolute -bottom-10 -right-2 w-44 overflow-hidden rounded-2xl border-4 border-porcelain shadow-2xl sm:-right-8 sm:w-56"
           >
             <Image
-              src="/images/clinic-interior.png"
-              alt="Interior lounge mewah Klinik Degerasia"
-              width={1344}
-              height={768}
+              src="/images/tim-degerasia.jpg"
+              alt="Tim Klinik Degerasia menyambut hangat di resepsionis klinik"
+              width={1512}
+              height={1008}
               className="h-28 w-full object-cover sm:h-36"
               sizes="240px"
             />

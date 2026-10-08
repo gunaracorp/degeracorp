@@ -7,25 +7,25 @@ import { Eyebrow, Reveal } from "./reveal";
 
 const PRODUCTS = [
   {
-    img: "/images/product-serum.png",
+    img: "/images/degera-serum.png",
     name: "Degera Radiance Serum",
     role: "Serum pencerah nan emas",
     note: "Peptida + Niacinamide — untuk kilau sehat yang merata",
   },
   {
-    img: "/images/product-sage.png",
+    img: "/images/degera-cream.png",
     name: "Degera Barrier Cream",
     role: "Krim pemulih lapisan kulit",
     note: "Ceramida kompleks — mengunci kelembapan 72 jam",
   },
   {
-    img: "/images/product-sunscreen.png",
+    img: "/images/degera-sunscreen.png",
     name: "Degera Veil Sunscreen",
     role: "Tabir surya velvety SPF 50",
     note: "Finish satin tanpa whitecast — aman untuk kulit tropis",
   },
   {
-    img: "/images/product-toner.png",
+    img: "/images/degera-toner.png",
     name: "Degera Dewy Toner",
     role: "Esensi pelembap ringan",
     note: "Hyaluronic multi-weight — siapkan kulit menyerap active",

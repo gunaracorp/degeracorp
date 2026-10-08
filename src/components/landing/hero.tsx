@@ -115,7 +115,7 @@ export function Hero() {
           {/* Potret lengkung galeri */}
           <div className="arch-frame relative overflow-hidden shadow-[0_50px_90px_-30px_rgba(15,36,21,0.55)]">
             <Image
-              src="/images/hero-portrait.png"
+              src="/images/doctor-hero.png"
               alt="Potret editorial Dr. Fatri Idana, senior dokter kecantikan, di Klinik Degerasia"
               width={768}
               height={1344}
