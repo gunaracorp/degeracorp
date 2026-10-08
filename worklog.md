@@ -118,3 +118,22 @@ Stage Summary:
 - Website DEGERASIA kini MULTI-PAGE (12 route + 13 detail layanan + 21 detail produk = 45+ halaman): /, /tentang, /layanan(+[slug]), /produk(+[slug]), /galeri, /artikel(+[slug]), /promo, /faq, /kontak.
 - Terinspirasi struktur beyoutifulbydrtompi.id (multi-page, signature series dr. Fatri menggantikan T-series dr. Tompi, promo & referral) dan ditinggalkan sesuai standar klinik global (service detail lengkap benefits/steps/downtime/FAQ, produk BPOM riil dengan harga, journal SEO, mega menu).
 - Data 21 produk BPOM riil (2022–2025) + 19 gambar baru tema botani emerald.
+
+---
+Task ID: install-degeracorp-1
+Agent: Z.ai Code (main orchestrator)
+Task: Install repository github.com/prabudanling/degeracorp ke environment sandbox /home/z/my-project.
+
+Work Log:
+- Clone repo https://github.com/prabudanling/degeracorp.git ke /home/z/degeracorp.
+- Verifikasi stack: identik dengan template sandbox (Next.js 16 + Tailwind 4 + shadcn/ui + Prisma SQLite), package.json dependency sama persis.
+- Hentikan dev server lama, salin seluruh isi repo (src, public, prisma, db, scripts, upload, download, examples, mini-services, .zscripts, tests, dan semua config: next.config.ts, tailwind.config.ts, postcss.config.mjs, eslint.config.mjs, tsconfig.json, components.json, Caddyfile, package.json, bun.lock, .env, .gitignore, worklog.md) ke /home/z/my-project.
+- prisma db push: database sudah sinkron, Prisma Client v6.19.2 ter-generate.
+- Dev server sempat hang saat compile route baru (0% CPU); diselesaikan dengan pkill + rm -rf .next + restart via .zscripts/dev.sh (bersih).
+- Verifikasi Agent Browser: 10 route utama 200 OK (/, /tentang, /produk, /layanan, /galeri, /artikel, /promo, /faq, /kontak, /api); homepage render hero "Seni Menemukan Keanggunan Alami Wajah Anda" + navbar sticky; navigasi client-side /produk → /produk/serum-gold sukses (BPOM NA18222000387, Rp 120.000).
+- Tes end-to-end form reservasi /kontak: isi nama/WA/layanan/pesan → submit → toast "Reservasi terkirim" → data "Sahabat Tester" terverifikasi tersimpan di SQLite via Prisma.
+
+Stage Summary:
+- Website DEGERASIA (klinik kecantikan dr. Fatri Idana, Sumbawa NTB) berhasil ter-install dan berjalan di port 3000.
+- 45+ halaman aktif: beranda, 13 detail layanan, 21 detail produk BPOM, artikel, galeri, promo, FAQ, kontak.
+- Full-stack terverifikasi: form → POST /api/contact → Prisma → SQLite. Dev log bersih tanpa error runtime.
