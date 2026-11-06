@@ -137,3 +137,18 @@ Stage Summary:
 - Website DEGERASIA (klinik kecantikan dr. Fatri Idana, Sumbawa NTB) berhasil ter-install dan berjalan di port 3000.
 - 45+ halaman aktif: beranda, 13 detail layanan, 21 detail produk BPOM, artikel, galeri, promo, FAQ, kontak.
 - Full-stack terverifikasi: form → POST /api/contact → Prisma → SQLite. Dev log bersih tanpa error runtime.
+
+---
+Task ID: readme-1
+Agent: Z.ai Code (main orchestrator)
+Task: Membuat README.md terbaik & terlengkap untuk project DEGERASIA + LICENSE (MIT).
+
+Work Log:
+- Riset mendalam: worklog.md (riwayat 8 fase), degerasia-data.ts (SITE/SERVICES 13/PRODUCTS 21/ARTICLES/PROMOS/FAQS/GALLERY/STATS/JOURNEY), api/contact/route.ts (validasi + status codes), layout.tsx (3 font + metadata), globals.css (design tokens).
+- README.md 527 baris dibuat: header center dengan logo asli + 11 shields.io badge (Next 16/React 19/TS5/Tailwind 4/Prisma/SQLite + metrics), kutipan dokter, tabel tentang project, peta 45+ halaman (9 keluarga route + tipe SSG), instalasi 60 detik, tabel 8 perintah, diagram arsitektur ASCII (browser → Next.js SSG/Client → API route → Prisma → SQLite), diagram alur single source of truth, struktur project tree, design system (8 token hijau + 3 font + signature elements), API documentation (request/response/contoh cURL/schema prisma), tabel verifikasi kualitas (10 cek), deployment (Docker/VPS/checklist go-live), tech stack detail, 4 collapsible feature highlights, roadmap, kontribusi, riwayat pengembangan 8 fase, MIT license, kontak riil klinik.
+- LICENSE dibuat (MIT + trademark notice brand DEGERASIA/DEGERA) — merujuk referensi [LICENSE](LICENSE) di README.
+- Fix typo: align=" center" → align="center".
+- Verifikasi: 91 baris tabel, 11 badge, server tetap 200 OK, dev.log bersih.
+
+Stage Summary:
+- README.md + LICENSE siap di-commit; dokumentasi setara project open-source kelas dunia dengan data riil (BPOM, alamat Sumbawa, WA klinik).
