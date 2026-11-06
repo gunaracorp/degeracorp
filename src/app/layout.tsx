@@ -1,25 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Italiana, Jost } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const jost = Jost({
+// Font di-host sendiri di ./fonts (subset latin) karena next/font/google
+// gagal di Turbopack saat Google Fonts membalas URL tanpa ekstensi
+// (vercel/next.js#99114) — build produksi tidak boleh bergantung jaringan.
+const jost = localFont({
   variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  src: [{ path: "./fonts/jost-latin-variable.woff2", weight: "100 900", style: "normal" }],
+  display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+const cormorant = localFont({
   variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  src: [
+    { path: "./fonts/cormorant-garamond-latin-variable.woff2", weight: "300 700", style: "normal" },
+    { path: "./fonts/cormorant-garamond-latin-italic-variable.woff2", weight: "300 700", style: "italic" },
+  ],
+  display: "swap",
 });
 
-const italiana = Italiana({
+const italiana = localFont({
   variable: "--font-italiana",
-  subsets: ["latin"],
-  weight: "400",
+  src: [{ path: "./fonts/italiana-latin-400.woff2", weight: "400", style: "normal" }],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
