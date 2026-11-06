@@ -115,10 +115,10 @@ export function Hero() {
           {/* Potret lengkung galeri */}
           <div className="arch-frame relative overflow-hidden shadow-[0_50px_90px_-30px_rgba(15,36,21,0.55)]">
             <Image
-              src="/images/doctor-hero.png"
-              alt="Potret editorial Dr. Fatri Idana, senior dokter kecantikan, di Klinik Degerasia"
-              width={768}
-              height={1344}
+              src="/images/dr-fatri-taif-hero.jpg"
+              alt="Foto asli dr. Fatri Idana, senior dokter kecantikan, di Taif Arab Saudi — dari Instagram pribadi @dr.fatriidana"
+              width={576}
+              height={1280}
               priority
               className="h-[30rem] w-full object-cover object-top md:h-[38rem] lg:h-[42rem]"
               sizes="(max-width: 1024px) 90vw, 42vw"

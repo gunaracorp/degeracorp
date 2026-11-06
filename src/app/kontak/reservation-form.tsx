@@ -33,7 +33,7 @@ export function ReservationForm() {
     if (form.phone.trim().length < 6) {
       toast({
         title: "Nomor WhatsApp tidak valid",
-        description: "Contoh format: 0822-3600-0715.",
+        description: "Contoh format: 0823-4009-4297.",
         variant: "destructive",
       });
       return;

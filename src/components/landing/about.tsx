@@ -41,10 +41,10 @@ export function About() {
           <Reveal>
             <div className="relative overflow-hidden rounded-[28px] shadow-[0_40px_70px_-30px_rgba(15,36,21,0.5)]">
               <Image
-                src="/images/doctor-about.png"
-                alt="Dr. Fatri Idana dalam suasana praktik di Klinik Degerasia"
-                width={864}
-                height={1152}
+                src="/images/dr-fatri-real.jpg"
+                alt="dr. Fatri Idana, M.Biomed., AAM — foto asli bersama tim di Klinik Degerasia"
+                width={504}
+                height={840}
                 className="h-[26rem] w-full object-cover object-top md:h-[32rem]"
                 sizes="(max-width: 1024px) 90vw, 45vw"
               />

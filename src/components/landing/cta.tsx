@@ -49,7 +49,7 @@ export function CtaBanner() {
               <span className="relative">Pesan Jadwal Sekarang</span>
             </Link>
             <a
-              href="https://wa.me/6282236000715"
+              href="https://wa.me/6282340094297"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full border border-porcelain/40 px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.25em] text-porcelain transition-all duration-500 hover:border-mint hover:text-mint"

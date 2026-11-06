@@ -30,7 +30,7 @@ export function FloatingActions() {
       </AnimatePresence>
 
       <motion.a
-        href="https://wa.me/6282236000715"
+        href="https://wa.me/6282340094297"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat WhatsApp Klinik Degerasia"

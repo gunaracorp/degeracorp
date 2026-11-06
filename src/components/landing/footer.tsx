@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, MapPin, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, MapPin, MessageCircle } from "lucide-react";
 import { SITE, waLink } from "@/lib/degerasia-data";
 
 const MAIN_LINKS = [
@@ -25,6 +25,16 @@ const SOCIALS = [
     icon: MessageCircle,
     label: "WhatsApp Klinik Degerasia",
     href: waLink(),
+  },
+  {
+    icon: Instagram,
+    label: `Instagram ${SITE.name}`,
+    href: SITE.instagramUrl,
+  },
+  {
+    icon: Instagram,
+    label: "Instagram Pribadi dr. Fatri Idana",
+    href: SITE.doctorInstagramUrl ?? "https://www.instagram.com/dr.fatriidana/",
   },
   {
     icon: Facebook,

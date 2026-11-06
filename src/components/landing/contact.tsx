@@ -35,7 +35,7 @@ const INFO = [
   {
     icon: Phone,
     title: "Telepon / WhatsApp",
-    lines: ["+62 822-3600-0715", "Chat untuk reservasi cepat"],
+    lines: ["+62 823-4009-4297", "Chat untuk reservasi cepat"],
   },
   {
     icon: Facebook,

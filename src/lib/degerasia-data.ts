@@ -17,6 +17,9 @@ export interface SiteInfo {
   phoneDisplay: string;
   whatsappUrl: string;
   facebookUrl: string;
+  instagramUrl: string;
+  doctorInstagramUrl?: string;
+  tiktokUrl?: string;
   address: string;
   addressShort: string;
   landmark: string;
@@ -120,9 +123,12 @@ export const SITE: SiteInfo = {
   tagline: "Seni & Sains Kecantikan Botani",
   doctorName: "Dr. Fatri Idana, M.Biomed., AAM",
   doctorTitle: "Senior Dokter Kecantikan · Founder Klinik Degerasia & Brand DEGERA",
-  phoneDisplay: "+62 822-3600-0715",
-  whatsappUrl: "https://wa.me/6282236000715",
-  facebookUrl: "https://web.facebook.com/klinik.gerasia",
+  phoneDisplay: "+62 823-4009-4297",
+  whatsappUrl: "https://wa.me/6282340094297",
+  facebookUrl: "https://www.facebook.com/klinik.gerasia",
+  instagramUrl: "https://www.instagram.com/klinikdegeraskincare/",
+  doctorInstagramUrl: "https://www.instagram.com/dr.fatriidana/",
+  tiktokUrl: "https://www.tiktok.com/@degeracream",
   address:
     "Jl. Sultan Kaharuddin, Dusun Sering, Desa Kerato, Kec. Unter Iwes, Kab. Sumbawa, Nusa Tenggara Barat 84316",
   addressShort: "Sumbawa, Nusa Tenggara Barat",
@@ -536,6 +542,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "jra-cream",
     name: "Degera J'Ra Cream",
+    // Foto asli produk (sumber: Instagram @klinikdegeraskincare)
     bpom: "NA18220106439",
     registered: "2022",
     category: "Cream",
@@ -544,7 +551,7 @@ export const PRODUCTS: Product[] = [
     desc: "Cream siang formula J'Ra legendaris: mencerahkan, melembapkan, dan melindungi kulit dari polusi. Aroma botani khas yang menenangkan.",
     usage: "Gunakan tiap pagi setelah toner, di area wajah dan leher.",
     ingredients: "Niacinamide, Rice Extract, Allantoin",
-    image: "/images/degera-cream.png",
+    image: "/images/produk-asli-jra-cream.jpg",
     badge: "Favorit",
   },
   {
@@ -642,6 +649,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "toner-acne",
     name: "Degera Toner Acne",
+    // Foto asli produk (sumber: Instagram @klinikdegeraskincare)
     bpom: "NA18231206431",
     registered: "2023",
     category: "Toner",
@@ -650,11 +658,12 @@ export const PRODUCTS: Product[] = [
     desc: "Toner khusus kulit berjerawat dengan bahan anti-bakteri alami yang menenangkan kemerahan dan mencegah jerawat baru muncul.",
     usage: "Tepukkan dengan kapas pada area jerawat, 2x sehari.",
     ingredients: "Salicylic Acid, Tea Tree, Centella Asiatica",
-    image: "/images/degera-toner.png",
+    image: "/images/produk-asli-toner-acne.jpg",
   },
   {
     slug: "acne-wash",
     name: "Degera Acne Wash",
+    // Foto asli produk (sumber: Instagram @klinikdegeraskincare)
     bpom: "NA18231206432",
     registered: "2023",
     category: "Cleanser",
@@ -663,7 +672,7 @@ export const PRODUCTS: Product[] = [
     desc: "Pembersih medis untuk kulit berjerawat aktif. Membersihkan bakteri penyebab jerawat sambil menjaga keseimbangan kulit.",
     usage: "Gunakan 2x sehari pada wajah yang lembap, bilas hingga bersih.",
     ingredients: "Salicylic Acid, Tea Tree Oil, Zinc PCA",
-    image: "/images/degera-cleanser.png",
+    image: "/images/produk-asli-acne-wash.jpg",
   },
   {
     slug: "milk-cleanser-acne",
@@ -694,6 +703,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "jra-night-cream",
     name: "Degera JRA Night Cream",
+    // Foto asli produk (sumber: Instagram @klinikdegeraskincare)
     bpom: "NA18240116611",
     registered: "2024",
     category: "Cream",
@@ -702,7 +712,7 @@ export const PRODUCTS: Product[] = [
     desc: "Formula malam J'Ra yang bekerja saat Anda tidur: memperbaiki, mencerahkan, dan meremajakan. Pagi hari kulit terasa lebih plump dan cerah.",
     usage: "Oleskan pada malam hari setelah serum.",
     ingredients: "Retinyl Palmitate, Niacinamide, Squalane",
-    image: "/images/degera-nightcream.png",
+    image: "/images/produk-asli-jra-night-cream.jpg",
   },
   {
     slug: "night-cream",
@@ -1119,7 +1129,7 @@ export const PROMOS: Promo[] = [
 export const FAQS: Faq[] = [
   {
     q: "Apakah saya perlu membuat janji sebelum datang?",
-    a: "Sangat disarankan. Reservasi melalui WhatsApp 0822-3600-0715 memastikan dr. Fatri menyiapkan waktu penuh untuk konsultasi Anda tanpa menunggu.",
+    a: "Sangat disarankan. Reservasi melalui WhatsApp 0823-4009-4297 memastikan dr. Fatri menyiapkan waktu penuh untuk konsultasi Anda tanpa menunggu.",
   },
   {
     q: "Bagaimana cara reservasi treatment?",
@@ -1162,13 +1172,18 @@ export const FAQS: Faq[] = [
 /* ── Galeri ────────────────────────────────────────────────── */
 
 export const GALLERY: GalleryItem[] = [
-  { src: "/images/clinic-interior.png", caption: "Lobi Klinik Degerasia", tag: "Fasilitas" },
-  { src: "/images/gallery-treatment-room.png", caption: "Ruang Treatment Premium", tag: "Fasilitas" },
-  { src: "/images/treatment-moment.png", caption: "Momensi Perawatan Bersama dr. Fatri", tag: "Treatment" },
+  // 100% foto asli — klinik, tim, dokter, produk & perjalanan (sumber: IG @dr.fatriidana & @klinikdegeraskincare)
+  { src: "/images/klinik-resepsionis.jpg", caption: "Lobi & Tim Resepsionis Klinik Degerasia", tag: "Fasilitas" },
+  { src: "/images/dr-fatri-taif-hero.jpg", caption: "dr. Fatri Idana di Taif, Arab Saudi — Perjalanan Suci", tag: "Perjalanan" },
+  { src: "/images/produk-asli-koleksi.jpg", caption: "Produk DEGERA Asli — Toner Acne, Acne Wash, J'RA Cream & J'RA Night Cream", tag: "Produk" },
   { src: "/images/tim-degerasia.jpg", caption: "Tim Besar Keluarga Degerasia", tag: "Tim" },
-  { src: "/images/gallery-facial-suite.png", caption: "Facial Suite dengan Sentuhan Botani", tag: "Fasilitas" },
-  { src: "/images/doctor-about.png", caption: "dr. Fatri Idana, M.Biomed., AAM", tag: "Dokter" },
-  { src: "/images/gallery-product-bar.png", caption: "Koleksi Produk DEGERA Resmi BPOM", tag: "Produk" },
+  { src: "/images/dr-fatri-makkah-umroh.jpg", caption: "dr. Fatri di Hotel Ajiyad, Makkah — Momens Umroh", tag: "Perjalanan" },
+  { src: "/images/dr-fatri-real.jpg", caption: "dr. Fatri Idana, M.Biomed., AAM", tag: "Dokter" },
+  { src: "/images/testimoni-pasien-asli.jpg", caption: "Testimoni Asli Pelanggan Setia DEGERA", tag: "Testimoni" },
+  { src: "/images/dr-fatri-korea-starfield.jpg", caption: "Starfield Library, Korea Selatan — Momen Liburan dr. Fatri", tag: "Perjalanan" },
+  { src: "/images/umroh-keluarga-degerasia.jpg", caption: "Keluarga Besar Degerasia Umroh Bersama di Makkah", tag: "Perjalanan" },
+  { src: "/images/dr-fatri-unud-konvos.jpg", caption: "Masa Studi dr. Fatri — Keluarga Besar Psikologi Unud", tag: "Dokter" },
+  { src: "/images/dr-fatri-live-edukasi.jpg", caption: "Live Edukasi \"New Year, New Skin\" bersama dr. Fatri", tag: "Edukasi" },
   { src: "/images/tumbler-degera.jpg", caption: "Merchandise Eksklusif Degerasia", tag: "Gaya Hidup" },
 ];
 

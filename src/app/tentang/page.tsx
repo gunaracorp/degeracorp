@@ -95,10 +95,10 @@ export default function TentangPage() {
               />
               <div className="arch-frame relative overflow-hidden bg-sage shadow-[0_50px_90px_-30px_rgba(15,36,21,0.5)]">
                 <Image
-                  src="/images/doctor-about.png"
-                  alt="Potret dr. Fatri Idana, M.Biomed., AAM — Founder Klinik Degerasia"
-                  width={864}
-                  height={1152}
+                  src="/images/dr-fatri-real.jpg"
+                  alt="Potret asli dr. Fatri Idana, M.Biomed., AAM — Founder Klinik Degerasia"
+                  width={504}
+                  height={840}
                   priority
                   className="h-[30rem] w-full object-cover object-top md:h-[36rem]"
                   sizes="(max-width: 1024px) 90vw, 40vw"

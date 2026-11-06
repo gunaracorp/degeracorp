@@ -16,7 +16,7 @@ const PRODUCTS = [
     price: "Rp 120.000",
   },
   {
-    img: "/images/degera-cream.png",
+    img: "/images/produk-asli-jra-cream.jpg",
     name: "Degera J'Ra Cream",
     role: "Krim siang legendaris",
     note: "Niacinamide + Rice Extract — mencerahkan & melindungi",

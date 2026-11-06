@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock, Facebook, MapPin, MessageCircle, Navigation } from "lucide-react";
+import { Clock, Facebook, Instagram, MapPin, MessageCircle, Navigation } from "lucide-react";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import { FloatingActions } from "@/components/landing/floating-actions";
@@ -130,6 +130,58 @@ export default function KontakPage() {
                     </p>
                     <p className="mt-1 text-[13px] font-light text-leaf-deep underline-offset-4 group-hover:underline">
                       klinik.gerasia — kabar, promo &amp; edukasi terbaru
+                    </p>
+                  </div>
+                </a>
+              </Reveal>
+
+              {/* Instagram */}
+              <Reveal delay={0.29}>
+                <a
+                  href={SITE.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Kunjungi Instagram ${SITE.name}`}
+                  className="group flex items-start gap-4 rounded-3xl border border-fern bg-card p-6 transition-all duration-500 hover:border-leaf/40 hover:shadow-[0_20px_40px_-20px_rgba(30,122,52,0.4)]"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sage text-leaf-deep transition-colors duration-500 group-hover:bg-forest group-hover:text-mint">
+                    <Instagram className="h-5 w-5" aria-hidden />
+                  </span>
+                  <div>
+                    <h3 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-forest">
+                      Instagram
+                    </h3>
+                    <p className="mt-2 text-[13px] font-light leading-relaxed text-moss">
+                      Klinik Degerasia
+                    </p>
+                    <p className="mt-1 text-[13px] font-light text-leaf-deep underline-offset-4 group-hover:underline">
+                      @klinikdegeraskincare — momen treatment &amp; edukasi harian
+                    </p>
+                  </div>
+                </a>
+              </Reveal>
+
+              {/* Instagram Pribadi dr. Fatri */}
+              <Reveal delay={0.31}>
+                <a
+                  href={SITE.doctorInstagramUrl ?? "https://www.instagram.com/dr.fatriidana/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Kunjungi Instagram pribadi dr. Fatri Idana"
+                  className="group flex items-start gap-4 rounded-3xl border border-fern bg-card p-6 transition-all duration-500 hover:border-leaf/40 hover:shadow-[0_20px_40px_-20px_rgba(30,122,52,0.4)]"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sage text-leaf-deep transition-colors duration-500 group-hover:bg-forest group-hover:text-mint">
+                    <Instagram className="h-5 w-5" aria-hidden />
+                  </span>
+                  <div>
+                    <h3 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-forest">
+                      Instagram Pribadi
+                    </h3>
+                    <p className="mt-2 text-[13px] font-light leading-relaxed text-moss">
+                      dr. Fatri Idana
+                    </p>
+                    <p className="mt-1 text-[13px] font-light text-leaf-deep underline-offset-4 group-hover:underline">
+                      @dr.fatriidana — keseruan perjalanan, umroh &amp; keseharian sang founder
                     </p>
                   </div>
                 </a>

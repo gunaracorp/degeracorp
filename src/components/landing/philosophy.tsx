@@ -11,10 +11,10 @@ export function Philosophy() {
         <Reveal className="relative order-2 lg:order-1">
           <div className="relative overflow-hidden rounded-t-[999px] rounded-b-[28px] border border-leaf/25 shadow-[0_40px_80px_-35px_rgba(15,36,21,0.5)]">
             <Image
-              src="/images/treatment-moment.png"
-              alt="Momen perawatan wajah mewah di Klinik Degerasia"
-              width={1344}
-              height={768}
+              src="/images/klinik-resepsionis.jpg"
+              alt="dr. Fatri Idana dan tim Klinik Degerasia menyambut pasien di lobi klinik"
+              width={1280}
+              height={853}
               className="h-72 w-full object-cover md:h-96"
               sizes="(max-width: 1024px) 90vw, 40vw"
             />

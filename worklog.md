@@ -152,3 +152,20 @@ Work Log:
 
 Stage Summary:
 - README.md + LICENSE siap di-commit; dokumentasi setara project open-source kelas dunia dengan data riil (BPOM, alamat Sumbawa, WA klinik).
+
+---
+Task ID: real-data-1
+Agent: Z.ai Code (main orchestrator)
+Task: Cari halaman resmi aktif Instagram & Facebook DEGERASIA, update semua data dummy → data riil + foto asli.
+
+Work Log:
+- Web search (z-ai function web_search): temuan resmi — Instagram @klinikdegerasiasumbawa (terkonfirmasi aktif, HTTP 200 via curl; postingan terakhir Nov 2025), Facebook klinik.gerasia ("Klinik Degerasia Aesthetic & Skincare", halaman resmi), WhatsApp 0823-4009-4297 (konsisten di bio FB, bio IG, dan poster resmi klinik). degerasia.com = NXDOMAIN (mati).
+- KONFIRMASI NOMOR WA: upload/degerasia-dr.jpg (poster resmi klinik, dr. Nugroho) mencetak "Hp. 0823-4009-4297" → nomor lama 0822-3600-0715 dianggap dummy, diganti resmi 6282340094297 di seluruh site (0 referensi lama tersisa).
+- FOTO ASLI ditemukan di upload/ (belum terpakai): footage-dr-fatri-idana.jpg 1280x853 = foto REAL lobi klinik + tim resepsionis (8 staf seragam merah + dr. Fatri blazer putih) di depan logo wall "Degera".
+- Aset baru: public/images/klinik-resepsionis.jpg (foto asli full) + public/images/dr-fatri-real.jpg (crop potret dr. Fatri 252x420 via sharp, upscale lanczos 2x → 504x840).
+- Update data & komponen: SiteInfo + SITE (instagramUrl baru, WA/FB resmi), FAQS (nomor), reservation-form.tsx (contoh placeholder), contact.tsx (display), floating-actions.tsx & cta.tsx (wa.me), footer.tsx (+ikon Instagram di SOCIALS), kontak/page.tsx (+kartu Instagram @klinikdegerasiasumbawa), about.tsx & tentang/page.tsx (doctor-about.png → dr-fatri-real.jpg), philosophy.tsx (treatment-moment.png → klinik-resepsionis.jpg), GALLERY (clinic-interior → foto asli lobi; potret dokter → foto asli), README.md (IG+FB+WA resmi).
+- Verifikasi browser end-to-end: 9 route 200; foto asli tampil di arch-frame /tentang (dr. Fatri nametag Degerasia), section filosofi homepage (foto tim real), galeri (lobi real + potret real); footer 4 ikon sosial + nomor baru; kartu Instagram di /kontak; link WA → wa.me/6282340094297 terverifikasi via eval DOM; aset jpg 200; lint 0 error.
+
+Stage Summary:
+- Sosmed resmi aktif terpasang: IG @klinikdegerasiasumbawa, FB klinik.gerasia, WA 0823-4009-4297 (terkonfirmasi dari bio resmi & poster klinik).
+- 3 foto asli kini hidup di website (lobi+tim, potret dr. Fatri, kolase about); produk tetap render AI (tidak ada foto produk riil di sumber publik) — user dapat upload foto produk asli nanti via public/images/.

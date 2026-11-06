@@ -372,7 +372,7 @@ NODE_ENV=production bun .next/standalone/server.js
 - [ ] Ganti `DATABASE_URL` ke path produksi absolut
 - [ ] `bun run db:push` di server produksi
 - [ ] Update `SITE` di `src/lib/degerasia-data.ts` bila kontak berubah
-- [ ] Verifikasi tombol WhatsApp mengarah ke nomor klinik
+- [ ] Verifikasi tombol WhatsApp mengarah ke nomor klinik (0823-4009-4297)
 - [ ] Set domain + SSL
 </details>
 
@@ -438,8 +438,9 @@ NODE_ENV=production bun .next/standalone/server.js
 
 1. **WhatsApp deep-link** — pesan otomatis: *"Halo Klinik Degerasia, saya ingin reservasi [treatment]"*
 2. **Form reservasi** — tersimpan permanen di database
-3. **Google Maps** — langsung ke lokasi klinik
-4. **Facebook** — klinik.gerasia
+3. **Instagram** — [@klinikdegerasiasumbawa](https://www.instagram.com/klinikdegerasiasumbawa/) (resmi & aktif)
+4. **Facebook** — [klinik.gerasia](https://www.facebook.com/klinik.gerasia) (halaman resmi)
+5. **Google Maps** — langsung ke lokasi klinik
 
 </details>
 
@@ -514,7 +515,7 @@ Proyek ini dilisensikan under **MIT License** — lihat file [LICENSE](LICENSE) 
 
 📍 Jl. Sultan Kaharuddin, Dusun Sering, Desa Kerato, Kec. Unter Iwes, Kab. Sumbawa, NTB 84316 *(di depan Masjid Sering / Perempatan Sering)*
 
-💬 WhatsApp: [+62 822-3600-0715](https://wa.me/6282236000715) · Facebook: [klinik.gerasia](https://web.facebook.com/klinik.gerasia)
+💬 WhatsApp: [+62 823-4009-4297](https://wa.me/6282340094297) · Instagram: [@klinikdegerasiasumbawa](https://www.instagram.com/klinikdegerasiasumbawa/) · Facebook: [klinik.gerasia](https://www.facebook.com/klinik.gerasia)
 
 🕗 Senin–Jumat 09.00–17.00 WITA · Sabtu 09.00–15.00 WITA · Minggu & Libur: Dengan Perjanjian
 
