@@ -8,7 +8,7 @@ import { Eyebrow, Reveal } from "./reveal";
 
 const PRODUCTS = [
   {
-    img: "/images/degera-serum.png",
+    img: "/images/real-produk-koleksi.jpg",
     name: "Degera Serum Gold",
     role: "Serum pencerah nan emas",
     note: "Peptida + Gold Colloid — memperbaiki kulit semalaman",
@@ -24,7 +24,7 @@ const PRODUCTS = [
     price: "Rp 55.000",
   },
   {
-    img: "/images/degera-sunscreen.png",
+    img: "/images/real-model-jra.jpg",
     name: "Degera Sunscreen Free Oily",
     role: "Tabir surya oil-free",
     note: "Finish matte tanpa whitecast — untuk kulit berminyak",
@@ -32,7 +32,7 @@ const PRODUCTS = [
     price: "Rp 55.000",
   },
   {
-    img: "/images/degera-toner.png",
+    img: "/images/real-toner-acnewash.jpg",
     name: "Degera Toner 2 IN 1",
     role: "Penyeimbang dua fungsi",
     note: "Witch Hazel + Panthenol — pori tampak halus",

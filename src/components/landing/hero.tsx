@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, BadgeCheck, GraduationCap, Star } from "lucide-react";
 
@@ -112,18 +111,15 @@ export function Hero() {
           />
           <div aria-hidden className="absolute -inset-2 rounded-t-full rounded-b-3xl border border-leaf/25" />
 
-          {/* Potret lengkung galeri */}
-          <div className="arch-frame relative overflow-hidden shadow-[0_50px_90px_-30px_rgba(15,36,21,0.55)]">
-            <Image
-              src="/images/dr-fatri-taif-hero.jpg"
-              alt="Foto asli dr. Fatri Idana, senior dokter kecantikan, di Taif Arab Saudi — dari Instagram pribadi @dr.fatriidana"
-              width={576}
-              height={1280}
-              priority
-              className="h-[30rem] w-full object-cover object-top md:h-[38rem] lg:h-[42rem]"
-              sizes="(max-width: 1024px) 90vw, 42vw"
-            />
-            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest/35 via-transparent to-transparent" />
+          {/* Potret lengkung galeri — slot sengaja dikosongkan sementara
+              sampai foto final bu dokter tersedia */}
+          <div className="arch-frame relative flex h-[30rem] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-sage via-porcelain to-mint/40 shadow-[0_50px_90px_-30px_rgba(15,36,21,0.55)] md:h-[38rem] lg:h-[42rem]">
+            <div className="px-8 text-center">
+              <p className="font-logo text-2xl tracking-[0.3em] text-leaf-deep/70">DEGERASIA</p>
+              <p className="mt-3 font-display text-lg italic text-moss/70">
+                Portret dr. Fatri Idana — segera hadir
+              </p>
+            </div>
           </div>
 
           {/* Kartu melayang: pengalaman */}

@@ -39,15 +39,13 @@ export function About() {
         {/* ── Kolase foto ─────────────────────────── */}
         <div className="relative mx-auto w-full max-w-lg">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[28px] shadow-[0_40px_70px_-30px_rgba(15,36,21,0.5)]">
-              <Image
-                src="/images/dr-fatri-real.jpg"
-                alt="dr. Fatri Idana, M.Biomed., AAM — foto asli bersama tim di Klinik Degerasia"
-                width={504}
-                height={840}
-                className="h-[26rem] w-full object-cover object-top md:h-[32rem]"
-                sizes="(max-width: 1024px) 90vw, 45vw"
-              />
+            <div className="relative flex h-[26rem] w-full items-center justify-center overflow-hidden rounded-[28px] bg-gradient-to-br from-sage via-porcelain to-mint/40 shadow-[0_40px_70px_-30px_rgba(15,36,21,0.5)] md:h-[32rem]">
+              <div className="px-8 text-center">
+                <p className="font-logo text-2xl tracking-[0.3em] text-leaf-deep/70">DEGERASIA</p>
+                <p className="mt-3 font-display text-lg italic text-moss/70">
+                  Portret dr. Fatri Idana — segera hadir
+                </p>
+              </div>
             </div>
           </Reveal>
 

@@ -178,7 +178,7 @@ export const SERVICES: Service[] = [
     duration: "± 75 menit",
     downtime: "Tidak ada",
     priceFrom: "Rp 350.000",
-    image: "/images/service-facial.png",
+    image: "/images/real-model-jra.jpg",
     faq: [
       { q: "Apakah F-Silk Glow bisa langsung memancarkan efek glowing?", a: "Ya, mayoritas pasien merasakan kulit lebih cerah dan lembut segera setelah sesi pertama. Efek optimal tercapai setelah 3 sesi rutin." },
       { q: "Sesering apa sebaiknya menjalani treatment ini?", a: "Kami merekomendasikan 2–4 minggu sekali sebagai perawatan rutin, disesuaikan dengan kondisi kulit Anda." },
@@ -207,7 +207,7 @@ export const SERVICES: Service[] = [
     duration: "± 45 menit",
     downtime: "1–5 hari (peeling ringan)",
     priceFrom: "Rp 450.000",
-    image: "/images/service-peeling.png",
+    image: "/images/real-jra-creams.jpg",
     faq: [
       { q: "Apakah kulit akan mengelupas banyak?", a: "Tergantung level peeling. Light peeling umumnya hampir tak terlihat; medium peeling mengalami pengelupasan halus 2–4 hari yang dapat ditutupi moisturizer." },
       { q: "Kapan boleh pakai makeup lagi?", a: "Setelah kulit selesai mengelupas, umumnya 3–5 hari. Kami sarankan makeup mineral yang aman." },
@@ -236,7 +236,7 @@ export const SERVICES: Service[] = [
     duration: "± 60 menit",
     downtime: "1–3 hari (kemerahan ringan)",
     priceFrom: "Rp 750.000",
-    image: "/images/service-injection.png",
+    image: "/images/real-poster-edukasi.jpg",
     faq: [
       { q: "Apakah prosedurnya menyakitkan?", a: "Kami mengaplikasikan krim biang numbing 30 menit sebelumnya sehingga nyeri minimal. Pasien umumnya hanya merasakan sensasi keringat dingin ringan." },
       { q: "Berapa sesi yang dibutuhkan?", a: "Untuk bekas jerawat: 3–4 sesi dengan jarak 4 minggu. Untuk rejuvenasi umum: 2–3 sesi sudah terasa signifikan." },
@@ -265,7 +265,7 @@ export const SERVICES: Service[] = [
     duration: "± 90 menit",
     downtime: "2–7 hari (bengkak ringan)",
     priceFrom: "Rp 3.500.000",
-    image: "/images/service-contour.png",
+    image: "/images/real-model-pria.jpg",
     faq: [
       { q: "Apakah hasilnya langsung terlihat?", a: "Ya, efek pengangkatan langsung terlihat setelah prosedur, lalu membaik maksimal pada bulan ke-2–3 seiring pembentukan kolagen baru." },
       { q: "Apakah thread perlu diambil kembali?", a: "Tidak. Thread PDO yang kami gunakan terdegradasi alami dalam 6–9 bulan, namun efek kolagennya bertahan jauh lebih lama." },
@@ -293,7 +293,7 @@ export const SERVICES: Service[] = [
     duration: "± 60 menit",
     downtime: "Tidak ada",
     priceFrom: "Rp 250.000",
-    image: "/images/service-facial.png",
+    image: "/images/real-model-jra.jpg",
     faq: [
       { q: "Bisa sekamar berdua dengan teman?", a: "Bisa! Kami memiliki suite facial ganda — cocok untuk momen self-care bersama." },
     ],
@@ -319,7 +319,7 @@ export const SERVICES: Service[] = [
     duration: "± 45 menit",
     downtime: "1–2 hari (titik suntik kecil)",
     priceFrom: "Rp 1.200.000",
-    image: "/images/service-injection.png",
+    image: "/images/real-poster-edukasi.jpg",
     faq: [
       { q: "Berapa lama hasilnya bertahan?", a: "6–9 bulan. Perawatan lanjutan setiap 6 bulan menjaga efek optimal." },
     ],
@@ -346,7 +346,7 @@ export const SERVICES: Service[] = [
     duration: "Program 4–12 minggu",
     downtime: "Sesuai tindakan",
     priceFrom: "Rp 550.000",
-    image: "/images/treatment-moment.png",
+    image: "/images/real-model-jra.jpg",
     faq: [
       { q: "Apakah harus beli produk DEGERA juga?", a: "Kami sangat menyarankan, karena konsistensi homecare menentukan 60% keberhasilan program. Produk dapat dipilih sesuai budget." },
     ],
@@ -373,7 +373,7 @@ export const SERVICES: Service[] = [
     duration: "Program 6–12 minggu",
     downtime: "Minimal",
     priceFrom: "Rp 650.000",
-    image: "/images/service-peeling.png",
+    image: "/images/real-jra-creams.jpg",
     faq: [
       { q: "Apakah melasma bisa hilang total?", a: "Melasma bersifat kronis — kami berupaya memudarkannya signifikan dan menjaganya stabil, bukan sekadar perbaikan sesaat." },
     ],
@@ -399,7 +399,7 @@ export const SERVICES: Service[] = [
     duration: "15–60 menit",
     downtime: "Tidak ada",
     priceFrom: "Rp 300.000",
-    image: "/images/service-laser.png",
+    image: "/images/real-produk-koleksi.jpg",
     faq: [
       { q: "Berapa sesi sampai bulu berhenti tumbuh?", a: "Umumnya 6–8 sesi dengan jarak 4–6 minggu untuk hasil optimal, karena siklus tumbuh bulu bertahap." },
     ],
@@ -425,7 +425,7 @@ export const SERVICES: Service[] = [
     duration: "± 30 menit",
     downtime: "Tidak ada",
     priceFrom: "Rp 900.000",
-    image: "/images/service-injection.png",
+    image: "/images/real-poster-edukasi.jpg",
     faq: [
       { q: "Berapa lama bertahan?", a: "4–6 bulan. Pengulangan rutin membuat efek semakin efisien karena otot 'terlatih' rileks." },
       { q: "Apakah wajah jadi kaku?", a: "Tidak, jika dosis dan titiknya tepat. Ini keahlian dr. Fatri: hasil fresh tanpa ekspresi beku." },
@@ -453,7 +453,7 @@ export const SERVICES: Service[] = [
     duration: "± 45 menit",
     downtime: "1–3 hari (bengkak ringan)",
     priceFrom: "Rp 1.500.000",
-    image: "/images/service-contour.png",
+    image: "/images/real-model-pria.jpg",
     faq: [
       { q: "Apakah bibir akan terlihat 'over'?", a: "Tidak — prinsip kami adalah natural enhancement. Anda bisa mulai 0.5–1 ml lalu evaluasi." },
       { q: "Apakah filler bisa dilepas?", a: "Ya, filler HA dapat dilarutkan dengan enzim hialuronidase bila diperlukan." },
@@ -480,7 +480,7 @@ export const SERVICES: Service[] = [
     duration: "± 60 menit",
     downtime: "3–7 hari",
     priceFrom: "Rp 2.500.000",
-    image: "/images/service-contour.png",
+    image: "/images/real-model-pria.jpg",
     faq: [
       { q: "Apakah ada bekas luka?", a: "Tidak ada bekas — hanya titik masuk jarum kecil yang sembuh beberapa hari." },
     ],
@@ -506,7 +506,7 @@ export const SERVICES: Service[] = [
     duration: "± 60–90 menit",
     downtime: "Tidak ada",
     priceFrom: "Rp 1.800.000",
-    image: "/images/service-laser.png",
+    image: "/images/real-produk-koleksi.jpg",
     faq: [
       { q: "Kapan hasilnya terlihat maksimal?", a: "Sedikit terasa setelah sesi, optimal pada bulan ke-2–3 seiring pembentukan kolagen baru." },
     ],
@@ -536,7 +536,7 @@ export const PRODUCTS: Product[] = [
     desc: "BB cream 2-in-1 yang merawat sambil menutupi. Perlindungan ringan dengan finish natural — kulit tampak sehat merata tanpa kesan tebal.",
     usage: "Aplikasikan secukupnya di wajah setelah moisturizer, ratakan merata.",
     ingredients: "Titanium Dioxide, Niacinamide, Vitamin E",
-    image: "/images/degera-bbcream.png",
+    image: "/images/real-produk-koleksi.jpg",
     badge: "Terlaris",
   },
   {
@@ -565,7 +565,7 @@ export const PRODUCTS: Product[] = [
     desc: "Dirancang khusus kulit berminyak: oil-free, matte finish, dan tidak menyumbat pori. Perlindungan UV penuh tanpa rasa lengket.",
     usage: "Aplikasikan tiap pagi dan ulangi setiap 3–4 jam saat aktivitas luar ruangan.",
     ingredients: "Octinoxate, Zinc Oxide, Niacinamide",
-    image: "/images/degera-sunscreen.png",
+    image: "/images/real-model-pria.jpg",
   },
   {
     slug: "milk-cleanser",
@@ -578,7 +578,7 @@ export const PRODUCTS: Product[] = [
     desc: "Cleanser susu lembut yang melarutkan makeup dan kotoran tanpa merusak moisture barrier. Sensasi lembut seperti perawatan spa.",
     usage: "Oleskan pada wajah kering, pijat lembut, bilas atau angkat dengan kapas.",
     ingredients: "Milk Protein, Glycerin, Aloe Vera",
-    image: "/images/degera-cleanser.png",
+    image: "/images/real-toner-acnewash.jpg",
   },
   {
     slug: "aha-cleanser-cair",
@@ -591,7 +591,7 @@ export const PRODUCTS: Product[] = [
     desc: "Pembersih dengan AHA lembut yang mengeksfoliasi saat mencuci — tekstur kulit lebih halus dan tone merata sejak pemakaian rutin.",
     usage: "Gunakan 1–2x sehari, pijat 30–60 detik lalu bilas.",
     ingredients: "Glycolic Acid, Lactic Acid, Glycerin",
-    image: "/images/degera-cleanser.png",
+    image: "/images/real-toner-acnewash.jpg",
   },
   {
     slug: "toner-2-in-1",
@@ -604,7 +604,7 @@ export const PRODUCTS: Product[] = [
     desc: "Dua fungsi dalam satu botol: menyeimbangkan pH setelah cuci muka sekaligus mengecilkan tampilan pori. Dasar sempurna sebelum serum.",
     usage: "Tuang di kapas, tepuk lembut ke wajah setelah membersihkan.",
     ingredients: "Witch Hazel, Niacinamide, Panthenol",
-    image: "/images/degera-toner.png",
+    image: "/images/real-toner-acnewash.jpg",
   },
   {
     slug: "cleanser-gel",
@@ -617,7 +617,7 @@ export const PRODUCTS: Product[] = [
     desc: "Gel pembersih segar yang mengangkat minyak berlebih tanpa membuat kulit tertarik-ketarik. Ideal untuk kulit kombinasi dan berminyak.",
     usage: "Gunakan pagi dan malam, bilas dengan air hangat.",
     ingredients: "Salicylic Acid, Tea Tree, Glycerin",
-    image: "/images/degera-cleanser.png",
+    image: "/images/real-toner-acnewash.jpg",
   },
   {
     slug: "serum-gold",
@@ -630,7 +630,7 @@ export const PRODUCTS: Product[] = [
     desc: "Mahakarya DEGERA: serum emas dengan peptida dan antioksidan premium yang memperbaiki kulit semalaman. Bangun dengan kulit lebih kenyal dan berkilau sehat.",
     usage: "Teteskan 3–4 tetes di malam hari setelah toner, tepuk hingga menyerap.",
     ingredients: "Peptide Complex, Gold Colloid, Vitamin C",
-    image: "/images/degera-serum.png",
+    image: "/images/real-produk-koleksi.jpg",
     badge: "Premium",
   },
   {
@@ -644,7 +644,7 @@ export const PRODUCTS: Product[] = [
     desc: "Versi glowing dari BB cream ikonik kami — finish luminous dewy seperti baru selesai treatment di klinik. Coverage ringan yang terasa seperti tak ada.",
     usage: "Aplikasikan setelah skincare pagi, ratakan dengan spons atau jari.",
     ingredients: "Niacinamide, Mica, Vitamin E",
-    image: "/images/degera-bbcream.png",
+    image: "/images/real-produk-koleksi.jpg",
   },
   {
     slug: "toner-acne",
@@ -685,7 +685,7 @@ export const PRODUCTS: Product[] = [
     desc: "Untuk kulit berjerawat sekaligus kering: kelembutan susu yang membersihkan tanpa mengeringkan, diformulasikan aman untuk kulit sensitif.",
     usage: "Gunakan pada malam hari, ikuti dengan Toner Acne.",
     ingredients: "Milk Protein, Centella, Allantoin",
-    image: "/images/degera-cleanser.png",
+    image: "/images/real-toner-acnewash.jpg",
   },
   {
     slug: "sunblock-n",
@@ -698,7 +698,7 @@ export const PRODUCTS: Product[] = [
     desc: "Sunblock netral untuk semua jenis kulit dengan proteksi spektrum luas. Ringan, cepat serap, cocok sebagai lapisan terakhir skincare pagi.",
     usage: "Aplikasikan setiap pagi sebagai langkah terakhir.",
     ingredients: "Zinc Oxide, Titanium Dioxide, Vitamin E",
-    image: "/images/degera-sunscreen.png",
+    image: "/images/real-model-pria.jpg",
   },
   {
     slug: "jra-night-cream",
@@ -725,7 +725,7 @@ export const PRODUCTS: Product[] = [
     desc: "Night cream klasik DEGERA yang dipercaya ribuan pasien: nutrisi mendalam semalaman untuk kulit lembut, cerah, dan terawat.",
     usage: "Gunakan setiap malam setelah toner/serum.",
     ingredients: "Vitamin C, Collagen, Aloe Vera",
-    image: "/images/degera-nightcream.png",
+    image: "/images/real-jra-creams.jpg",
     badge: "Favorit",
   },
   {
@@ -739,7 +739,7 @@ export const PRODUCTS: Product[] = [
     desc: "Lotion malam premium dengan tekstur ringan namun nutrisi melimpah. Perawatan anti-aging menyeluruh untuk wajah dan leher.",
     usage: "Oleskan merata pada wajah dan leher tiap malam.",
     ingredients: "Peptide, Hyaluronic Acid, Ceramide",
-    image: "/images/degera-lotion.png",
+    image: "/images/real-model-jra.jpg",
     badge: "Premium",
   },
   {
@@ -753,7 +753,7 @@ export const PRODUCTS: Product[] = [
     desc: "Busa lembut yang melimpah membersihkan hingga ke pori, meninggalkan rasa bersih segar tanpa kesan tertarik.",
     usage: "Bentuk busa dengan air, pijat wajah, bilas bersih.",
     ingredients: "Amino Acid Surfactant, Glycerin, Green Tea",
-    image: "/images/degera-facialfoam.png",
+    image: "/images/real-toner-acnewash.jpg",
   },
   {
     slug: "cleansing-toner",
@@ -766,7 +766,7 @@ export const PRODUCTS: Product[] = [
     desc: "Toner pembersih yang menyisir sisa makeup dan kotoran yang lolos — langkah terakhir pembersihan, sekaligus persiapan penyerapan maksimal.",
     usage: "Basahi kapas, usapkan lembut menyeluruh setelah cuci muka.",
     ingredients: "Cucumber Extract, Panthenol, Allantoin",
-    image: "/images/degera-toner.png",
+    image: "/images/real-toner-acnewash.jpg",
   },
   {
     slug: "body-whitening-premium",
@@ -779,7 +779,7 @@ export const PRODUCTS: Product[] = [
     desc: "Lotion pencerah badan premium untuk kulit tubuh yang lebih cerah, lembut, dan beraroma botani mewah. Pilihan favorit pasien program glowing.",
     usage: "Aplikasikan pada badan setelah mandi, fokus area gelap.",
     ingredients: "Niacinamide, Kojic Acid, Shea Butter",
-    image: "/images/degera-lotion.png",
+    image: "/images/real-model-jra.jpg",
   },
   {
     slug: "jra-serum",
@@ -792,7 +792,7 @@ export const PRODUCTS: Product[] = [
     desc: "Seri J'Ra terbaru: serum konsentrat dengan bahan aktif pencerah dan anti-aging dalam botol mungil. Perawatan intensif untuk area yang butuh fokus.",
     usage: "Teteskan pada area bermasalah atau seluruh wajah di malam hari.",
     ingredients: "Niacinamide, Peptide, Alpha Arbutin",
-    image: "/images/degera-serum.png",
+    image: "/images/real-produk-koleksi.jpg",
     badge: "Baru",
   },
   {
@@ -806,7 +806,7 @@ export const PRODUCTS: Product[] = [
     desc: "Untuk kulit kering dan normal: sunscreen dengan kelembapan ekstra yang membuat kulit tetap nyaman, sehat, dan bercahaya sepanjang hari.",
     usage: "Gunakan tiap pagi, ulangi setelah 3–4 jam.",
     ingredients: "Hyaluronic Acid, Zinc Oxide, Squalane",
-    image: "/images/degera-sunscreen.png",
+    image: "/images/real-model-pria.jpg",
     badge: "Baru",
   },
 ];
@@ -822,7 +822,7 @@ export const ARTICLES: Article[] = [
       "Rangkaian skincare yang bagus bisa sia-sia jika urutannya salah. dr. Fatri menjelaskan urutan malam yang benar beserta alasannya.",
     date: "2025-01-12",
     readTime: "6 menit",
-    cover: "/images/article-skincare.jpg",
+    cover: "/images/real-produk-koleksi.jpg",
     author: "Dr. Fatri Idana, M.Biomed., AAM",
     sections: [
       {
@@ -864,7 +864,7 @@ export const ARTICLES: Article[] = [
       "80% penuaan kulit berasal dari paparan matahari. Inilah alasan mengapa sunscreen adalah produk paling penting di rak Anda.",
     date: "2025-01-28",
     readTime: "5 menit",
-    cover: "/images/article-sunscreen.jpg",
+    cover: "/images/real-model-pria.jpg",
     author: "Dr. Fatri Idana, M.Biomed., AAM",
     sections: [
       {
@@ -897,7 +897,7 @@ export const ARTICLES: Article[] = [
       "Salah satu prosedur paling populer di klinik kecantikan — apa yang sebenarnya terjadi pada kulit Anda selama dan setelah peeling?",
     date: "2025-02-08",
     readTime: "7 menit",
-    cover: "/images/article-peeling.jpg",
+    cover: "/images/real-model-jra.jpg",
     author: "Dr. Fatri Idana, M.Biomed., AAM",
     sections: [
       {
@@ -931,7 +931,7 @@ export const ARTICLES: Article[] = [
       "Dua injeksi paling populer di dunia estetika sering tertukar. Kenali perbedaannya agar Anda tidak salah memilih treatment.",
     date: "2025-02-20",
     readTime: "6 menit",
-    cover: "/images/article-botox.jpg",
+    cover: "/images/real-poster-edukasi.jpg",
     author: "Dr. Fatri Idana, M.Biomed., AAM",
     sections: [
       {
@@ -964,7 +964,7 @@ export const ARTICLES: Article[] = [
       "Regenerasi kulit mencapai puncaknya saat Anda tidur. Beginilah cara memaksimalkan 'jam emas' perbaikan kulit malam hari.",
     date: "2025-03-02",
     readTime: "5 menit",
-    cover: "/images/article-night.jpg",
+    cover: "/images/real-jra-creams.jpg",
     author: "Dr. Fatri Idana, M.Biomed., AAM",
     sections: [
       {
@@ -995,7 +995,7 @@ export const ARTICLES: Article[] = [
       "Jerawat di usia 25–40 tahun punya pemicu berbeda dari masa remaja. Kenali akar masalahnya sebelum membeli produk berikutnya.",
     date: "2025-03-15",
     readTime: "7 menit",
-    cover: "/images/article-acne.jpg",
+    cover: "/images/real-toner-acnewash.jpg",
     author: "Dr. Fatri Idana, M.Biomed., AAM",
     sections: [
       {
@@ -1185,6 +1185,9 @@ export const GALLERY: GalleryItem[] = [
   { src: "/images/dr-fatri-unud-konvos.jpg", caption: "Masa Studi dr. Fatri — Keluarga Besar Psikologi Unud", tag: "Dokter" },
   { src: "/images/dr-fatri-live-edukasi.jpg", caption: "Live Edukasi \"New Year, New Skin\" bersama dr. Fatri", tag: "Edukasi" },
   { src: "/images/tumbler-degera.jpg", caption: "Merchandise Eksklusif Degerasia", tag: "Gaya Hidup" },
+  { src: "/images/real-poster-edukasi.jpg", caption: "Poster Edukasi Klinik Degerasia — Pencegahan & Pengobatan Osteoporosis Sejak Dini", tag: "Edukasi" },
+  { src: "/images/real-model-jra.jpg", caption: "Pelanggan Setia DEGERA dengan J'Ra Cream di Teras Klinik", tag: "Gaya Hidup" },
+  { src: "/images/real-model-pria.jpg", caption: "Ambasador DEGERA — Toner Acne & Acne Wash", tag: "Gaya Hidup" },
 ];
 
 /* ── Statistik Klinik ──────────────────────────────────────── */
